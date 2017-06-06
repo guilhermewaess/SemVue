@@ -1,6 +1,9 @@
 /* eslint-disable */
-const components = {
-    get modal() { return sinon.stub().returns(this) },
-};
+const jqueryMock = {};
 
-module.exports = sinon.stub().returns(components);
+jqueryMock.modal = sinon.stub().returns(jqueryMock);
+jqueryMock.reset = () => {
+    jqueryMock.modal.reset();
+}
+
+module.exports = sinon.stub().returns(jqueryMock);

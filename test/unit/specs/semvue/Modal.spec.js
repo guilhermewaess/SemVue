@@ -7,6 +7,7 @@ const ModalConstructor = Vue.extend(Modal);
 
 describe('Modal', () => {
     beforeEach(() => {
+        $().reset();
         validProps = { modalId: 'modalId', showModal: false };
         modal = new ModalConstructor({ propsData: validProps }).$mount();
     });
@@ -53,6 +54,62 @@ describe('Modal', () => {
         it('should call jquery selector with modalId', (done) => {
             modal.$nextTick(() => {
                 expect($).to.have.been.calledWith(`#${validProps.modalId}`);
+                done();
+            });
+        });
+        it('should configure modal with closable', (done) => {
+            modal.$nextTick(() => {
+                const configurationCall = $().modal.args[0][0];
+                expect(configurationCall.closable).to.equal(modal.closable);
+                done();
+            });
+        });
+        it('should configure modal with onHidden function', (done) => {
+            modal.$nextTick(() => {
+                const configurationCall = $().modal.args[0][0];
+                const jsonCallHiddenFunction = JSON.stringify(configurationCall.onHidden);
+                const jsonModalHiddenFunction = JSON.stringify(modal.onHiddenCallback);
+                expect(jsonCallHiddenFunction).to.deep.equal(jsonModalHiddenFunction);
+                done();
+            });
+        });
+        it('should show modal', (done) => {
+            modal.$nextTick(() => {
+                expect($().modal).to.have.been.calledWith('show');
+                done();
+            });
+        });
+    });
+
+    describe('when showModal prop changes to false', () => {
+        beforeEach((done) => {
+            validProps.showModal = true;
+            modal = new ModalConstructor({ propsData: validProps }).$mount();
+            modal.showModal = false;
+            done();
+        });
+        it('should call jquery selector with modalId', (done) => {
+            modal.$nextTick(() => {
+                expect($).to.have.been.calledWith(`#${validProps.modalId}`);
+                done();
+            });
+        });
+        it('should hide modal', (done) => {
+            modal.$nextTick(() => {
+                expect($().modal).to.have.been.calledWith('hide');
+                done();
+            });
+        });
+        it('should not configure modal', (done) => {
+            modal.$nextTick(() => {
+                const firstCall = $().modal.args[0][0];
+                expect(firstCall).to.be.a('string');
+                done();
+            });
+        });
+        it('should call modal only once to hide', (done) => {
+            modal.$nextTick(() => {
+                expect($().modal).to.have.callCount(1);
                 done();
             });
         });

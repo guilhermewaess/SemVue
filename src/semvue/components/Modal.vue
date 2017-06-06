@@ -47,16 +47,23 @@ export default {
         };
     },
     methods: {
+        onHiddenCallback() {
+            this.$emit('update:showModal', false);
+        },
     },
     watch: {
         showModal() {
             const toggleDecision = this.showModal ? 'show' : 'hide';
-            $(`#${this.modalId}`)
-                .modal({
+            const modalElement = $(`#${this.modalId}`);
+
+            if (this.showModal) {
+                modalElement.modal({
                     closable: this.closable,
-                    onHidden: () => { this.$emit('update:showModal', false); },
-                })
-                .modal(toggleDecision);
+                    onHidden: this.onHiddenCallback,
+                });
+            }
+
+            modalElement.modal(toggleDecision);
         },
     },
 };
