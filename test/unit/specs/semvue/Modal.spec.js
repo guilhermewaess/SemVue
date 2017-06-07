@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Modal from '@/semvue/semvue';
+import { Modal } from '@/semvue/semvue';
 
 let modal;
 let validProps;
