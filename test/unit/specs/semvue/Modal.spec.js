@@ -114,4 +114,22 @@ describe('Modal', () => {
             });
         });
     });
+
+    describe('when onHiddenCallback is executed', () => {
+        let spy;
+        beforeEach((done) => {
+            spy = sinon.spy();
+            modal.$once('update:showModal', spy);
+            modal.onHiddenCallback();
+            done();
+        });
+        it('should trigger event only once', (done) => {
+            expect(spy).to.have.been.callCount(1);
+            done();
+        });
+        it('should trigger a event update:showModal with false', (done) => {
+            expect(spy).to.have.been.calledWith(false);
+            done();
+        });
+    });
 });
