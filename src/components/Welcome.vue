@@ -1,6 +1,6 @@
 <template>
   <div class="ui fluid container">
-    <img class="ui big centered image" src="./../assets/logo.png">
+    <img class="ui huge centered image" src="./../assets/logoTransparente.png">
     <div class="ui centered header">
       SemVue is a effort to bring
       <a href="https://semantic-ui.com/">Semantic-ui</a> components to

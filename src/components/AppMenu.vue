@@ -1,7 +1,7 @@
 <template>
     <div class="ui vertical inverted sticky menu fixed top">
-        <router-link class="item" :to="{ name: 'welcome' }">
-            <img class="ui mini centered image" src="./../assets/logo.png">
+        <router-link class="item logo" :to="{ name: 'welcome' }">
+            <img class="ui small centered image" src="./../assets/logoTransparente.png">
         </router-link>
     
         <router-link class="item" :to="{ name: 'AccordionDoc' }">
@@ -23,6 +23,10 @@ export default {
 <style lang="less" scoped>
 .menu {
     height: 100%;
+
+    .logo{
+        background-color: transparent!important;
+    }
 }
 
 .font-base {
