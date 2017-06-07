@@ -4,6 +4,10 @@
             <img class="ui mini centered image" src="./../assets/logo.png">
         </router-link>
     
+        <router-link class="item" :to="{ name: 'AccordionDoc' }">
+            Accordion
+        </router-link>
+
         <router-link class="item" :to="{ name: 'ModalDoc' }">
             Modal
         </router-link>

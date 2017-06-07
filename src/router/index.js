@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Welcome from '@/components/Welcome';
+import AccordionDoc from '@/components/AccordionDoc';
 import ModalDoc from '@/components/ModalDoc';
 
 Vue.use(Router);
@@ -26,6 +27,11 @@ export default new Router({
       path: '/ModalDoc',
       name: 'ModalDoc',
       component: ModalDoc,
+    },
+    {
+      path: '/AccordionDoc',
+      name: 'AccordionDoc',
+      component: AccordionDoc,
     },
   ],
 });
