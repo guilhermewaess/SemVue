@@ -33,7 +33,7 @@
     </div>
   
     <h3 class="ui header">Props</h3>
-    <div class="ui styled accordion">
+    <accordion accordionId="accordion-props" customClass="styled">
       <div class="title">
         <i class="dropdown icon"></i>
         modalId (String)
@@ -77,8 +77,7 @@
           </p>
         </div>
       </div>
-  
-    </div>
+    </accordion>
   
     <modal modalId="basic-modal" modalType="basic" :showModal.sync="showBasicModal">
       <div slot="header">Hello, i'm header</div>
@@ -96,12 +95,13 @@
 </template>
 
 <script>
-import { Modal } from '@/semvue/semvue';
+import { Modal, Accordion } from '@/semvue/semvue';
 
 export default {
   name: 'ModalDoc',
   components: {
     Modal,
+    Accordion,
   },
   data() {
     return {
@@ -110,13 +110,9 @@ export default {
     };
   },
   methods: {
-    changeModalStatus(visibilityProperty, shouldActivate) {
-      this[visibilityProperty] = shouldActivate;
+    changeModalStatus(visibilityProperty, showModal) {
+      this[visibilityProperty] = showModal;
     },
-  },
-  mounted() {
-    $('.accordion')
-      .accordion();
   },
 };
 </script>
