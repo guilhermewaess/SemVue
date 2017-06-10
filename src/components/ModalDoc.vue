@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { Modal, Accordion } from '@/semvue/semvue';
+import { Modal, Accordion } from '@/semvue/index';
 
 export default {
   name: 'ModalDoc',

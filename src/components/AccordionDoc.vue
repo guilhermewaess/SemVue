@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { Accordion } from '@/semvue/semvue';
+import { Accordion } from '@/semvue/index';
 
 export default {
     name: 'AccordionDoc',

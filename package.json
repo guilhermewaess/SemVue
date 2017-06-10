@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js",
+    "build-demo": "node build/build.js",
+    "build-semvue": "webpack --progress --hide-modules --config build/semvue/webpack.semvue.build.js && webpack --progress --hide-modules --config build/semvue/webpack.semvue.build.min.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"

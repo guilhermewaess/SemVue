@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Accordion } from '@/semvue/semvue';
+import { Accordion } from '@/semvue/index';
 
 let accordion;
 let validProps;
