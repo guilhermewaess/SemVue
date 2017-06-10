@@ -1,9 +1,21 @@
 {
   "name": "semvue",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "A semantic-ui components implemented in VueJs",
   "author": "Guilherme Waess <guilherme.waess@gmail.com>",
   "private": false,
+  "keywords": [
+    "vuejs",
+    "vue-semanticui",
+    "vue-semantic-ui",
+    "semantic-ui",
+    "vue-components",
+    "semantic components"
+  ],
+  "files": [
+    "dist"
+  ],
+  "readme": "SEMVUE.md",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -11,16 +23,18 @@
     "build-semvue": "webpack --progress --hide-modules --config build/semvue/webpack.semvue.build.js && webpack --progress --hide-modules --config build/semvue/webpack.semvue.build.min.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "lint-semvue": "eslint --ext .js,.vue src/semvue test/unit/specs/semvue",
+    "prepublish": "npm run lint-semvue && npm run test && npm run build-semvue"
   },
   "dependencies": {
+    "vue": "^2.3.3"
+  },
+  "devDependencies": {
+    "vue-router": "^2.3.1",
     "jquery": "^3.2.1",
     "less": "^2.7.2",
     "less-loader": "^4.0.3",
-    "vue": "^2.3.3",
-    "vue-router": "^2.3.1"
-  },
-  "devDependencies": {
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",

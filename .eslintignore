@@ -1,3 +1,4 @@
 build/*.js
+dist/*.js
 config/*.js
 src/semantic-ui/*.js
