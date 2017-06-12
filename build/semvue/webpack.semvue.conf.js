@@ -9,10 +9,10 @@ function resolve(dir) {
 module.exports = {
     entry: './src/semvue/index.js',
     output: {
-        filename: 'semvue.js',
+        filename: 'index.js',
         library: 'SemVue',
         libraryTarget: 'umd',
-        path: path.resolve(__dirname, '../../dist/semvue'),
+        path: path.resolve(__dirname, '../../dist/semvue/'),
         publicPath: '/',
     },
     resolve: {

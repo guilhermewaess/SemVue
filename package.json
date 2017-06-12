@@ -1,6 +1,6 @@
 {
   "name": "semvue",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "A semantic-ui components implemented in VueJs",
   "author": "Guilherme Waess <guilherme.waess@gmail.com>",
   "private": false,
@@ -25,7 +25,7 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "lint-semvue": "eslint --ext .js,.vue src/semvue test/unit/specs/semvue",
-    "prepublish": "npm run lint-semvue && npm run test && npm run build-semvue"
+    "dist": "npm run lint-semvue && npm run test && npm run build-semvue && cd dist/semvue && npm publish"
   },
   "dependencies": {
     "vue": "^2.3.3"
