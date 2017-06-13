@@ -10,9 +10,13 @@ Vue.use(Router);
 export default new Router({
   hashbang: false,
   linkActiveClass: 'active',
-  mode: 'history',
-  base: __dirname,
+  mode: 'hash',
+  // base: `${__dirname}/SemVue`,
   routes: [
+    {
+      path: '*',
+      redirect: '/',
+    },
     {
       path: '/',
       name: 'home',

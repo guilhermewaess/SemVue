@@ -8,6 +8,12 @@
         <div class="ui segment">
             <pre>
                 import { Accordion } from 'semvue';
+
+                export default {
+                    components: {
+                        Accordion,
+                    },
+                }
             </pre>
         </div>
     

@@ -1,7 +1,7 @@
 var path = require('path')
-var utils = require('./utils')
+var utils = require('../utils')
 var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
+var vueLoaderConfig = require('./../config/vue-loader.conf')
 var webpack = require('webpack')
 
 function resolve (dir) {
@@ -23,8 +23,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      '@mocks': resolve('test/mocks')
+      '@': resolve('../src'),
+      '@mocks': resolve('../test/mocks')
     }
   },
   module: {
@@ -33,7 +33,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
+        include: [resolve('../src'), resolve('../test')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -46,7 +46,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('../src'), resolve('../test')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

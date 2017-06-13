@@ -16,20 +16,27 @@
   
     <div class="ui segment">
       <pre>
-            import { Modal } from 'semvue';
-        </pre>
+          import { Modal } from 'semvue';
+
+          export default {
+            name: 'ModalDoc',
+            components: {
+              Modal,
+            },
+          }
+      </pre>
     </div>
   
     <p>Note that you'll need provide a var to control the visibility of modal and configure the tree base parts of modal: header, content, actions</p>
   
     <div class="ui segment">
       <pre>
-          &ltmodal modalId="modal1" modalType="basic" :showModal.sync="showBasicModal"&gt
-            &ltdiv slot="header"&gtHello, i'm header&lt/div&gt
-            &ltdiv slot="content"&gtHello, i'm content&lt/div&gt
-            &ltdiv slot="footer"&gtHello, i'm footer&lt/div&gt
-          &lt/modal&gt
-        </pre>
+        &ltmodal modalId="modal1" modalType="basic" :showModal.sync="showBasicModal"&gt
+          &ltdiv slot="header"&gtHello, i'm header&lt/div&gt
+          &ltdiv slot="content"&gtHello, i'm content&lt/div&gt
+          &ltdiv slot="footer"&gtHello, i'm footer&lt/div&gt
+        &lt/modal&gt
+      </pre>
     </div>
   
     <h3 class="ui header">Props</h3>
@@ -51,11 +58,11 @@
           <p>Used to define what type of modal you want,
             <a href="https://semantic-ui.com/modules/modal.html#/examples">you can see all modal types here</a>
           </p>
-            <pre>
-              e.g.: modalType="basic"
-                    modalType="fullscreen"
-              default is empty<strong>(standard modal)</strong>
-            </pre>
+          <pre>
+                e.g.: modalType="basic"
+                      modalType="fullscreen"
+                default is empty<strong>(standard modal)</strong>
+              </pre>
         </div>
       </div>
       <div class="title">

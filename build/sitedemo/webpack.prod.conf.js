@@ -1,5 +1,5 @@
 var path = require('path')
-var utils = require('./utils')
+var utils = require('../utils')
 var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
@@ -76,7 +76,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           module.resource &&
           /\.js$/.test(module.resource) &&
           module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
+            path.join(__dirname, '../../node_modules')
           ) === 0
         )
       }
@@ -90,7 +90,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../../static'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
