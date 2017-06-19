@@ -3,7 +3,7 @@
     <h1 class="ui dividing header">Modal</h1>
   
     <p>Modal component,
-      <a href="https://semantic-ui.com/modules/modal.html">you can see all documentation here</a>
+      <a href="https://semantic-ui.com/modules/modal.html"> you can see all documentation here</a>
     </p>
   
     <div class="ui bottom button" @click="changeModalStatus('showLongModal',true)">

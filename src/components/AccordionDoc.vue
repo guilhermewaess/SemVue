@@ -93,7 +93,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .ui.container {
     padding-top: 1em;
 }

@@ -28,6 +28,7 @@
     "dist": "npm run lint-semvue && npm run test && npm run build-semvue && cd dist/semvue && npm publish"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "vue": "^2.3.3"
   },
   "devDependencies": {
