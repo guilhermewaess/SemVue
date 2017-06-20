@@ -8,7 +8,7 @@
     </div>
   
     <h1 class="ui dividing header">Install</h1>
-    <h5>Semantic-ui has dependency of jquery, so, we assume that you already have imported jquery in your project</h5>
+    <h5>Semantic-ui has dependency of jquery, so, I assume that you already have imported jquery in your project (but I hope that you never need to use that with this components :D)</h5>
     <h3>With npm</h3>
   
     <div class="ui segment">
