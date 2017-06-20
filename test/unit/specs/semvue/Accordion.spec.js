@@ -33,7 +33,7 @@ describe('Accordion', () => {
         });
         it('should call jquery selector with accordionId', (done) => {
             accordion.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.accordionId}`);
+                expect($).to.have.been.calledWith('.ui.accordion');
                 done();
             });
         });

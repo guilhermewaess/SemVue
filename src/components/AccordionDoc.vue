@@ -63,14 +63,14 @@
                 accordionId (String)
             </div>
             <div class="content">
-                <p class="transition hidden">Is a div id for modal, could be usefull when you have more than one accordion on page with different styles</p>
+                <p class="">Is a div id for modal, could be usefull when you have more than one accordion on page with different styles</p>
             </div>
             <div class="title">
                 <i class="dropdown icon"></i>
                 customClass (String | Not Required)
             </div>
             <div class="content">
-                <p class="transition hidden">Used to define differente type of accordion,
+                <p class="">Used to define differente type of accordion,
                     <a href="https://semantic-ui.com/modules/accordion.html">you can see all accordion types here</a>
                 </p>
                 <pre>

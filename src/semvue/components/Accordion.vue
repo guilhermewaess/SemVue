@@ -18,8 +18,7 @@ export default {
         },
     },
     mounted() {
-        const accordionElement = $(`#${this.accordionId}`);
-
+        const accordionElement = $('.ui.accordion');
         accordionElement.accordion();
     },
 };

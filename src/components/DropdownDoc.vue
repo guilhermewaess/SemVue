@@ -51,21 +51,21 @@
                 dropdownId (String)
             </div>
             <div class="content">
-                <p class="transition hidden">Is a div id for dropdown, could be usefull when you have more than one dropdown on page with different styles</p>
+                <p>Is a div id for dropdown, could be usefull when you have more than one dropdown on page with different styles</p>
             </div>
             <div class="title">
                 <i class="dropdown icon"></i>
                 value (Object)
             </div>
             <div class="content">
-                <p class="transition hidden">Any var where the component will put the selected value</p>
+                <p>Any var where the component will put the selected value</p>
             </div>
             <div class="title">
                 <i class="dropdown icon"></i>
                 options (Array)
             </div>
             <div class="content">
-                <div class="transition hidden">
+                <div>
                     <p>Any array with objects that will use to render options</p>
                     <p>
                         <strong>Must have property text and value</strong>

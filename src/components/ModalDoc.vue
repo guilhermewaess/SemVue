@@ -70,14 +70,14 @@
         showModal (Boolean)
       </div>
       <div class="content">
-        <p class="transition hidden">Used to toggle modal visibility, start with false and change to true whenever you want to show modal</p>
+        <p>Used to toggle modal visibility, start with false and change to true whenever you want to show modal</p>
       </div>
       <div class="title">
         <i class="dropdown icon"></i>
         closeable (Boolean | Not Required)
       </div>
       <div class="content">
-        <div class="transition hidden">
+        <div>
           <p>Used to define if modal should closed with any click or force user to take some action</p>
           <p>Default value is
             <strong>true</strong>
