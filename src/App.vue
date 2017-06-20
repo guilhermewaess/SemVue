@@ -1,5 +1,8 @@
 <template>
   <div class="ui fluid container">
+    <a href="https://www.github.com/guilhermewaess/SemVue" target="_blank" class="ui black right corner huge label">
+        <i class="github icon"></i>
+      </a>
     <app-menu></app-menu>
     <div class="pusher">
       <transition name="component-transition">
