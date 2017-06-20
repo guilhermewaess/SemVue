@@ -1,9 +1,14 @@
 {
   "name": "semvue",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "A semantic-ui components implemented in VueJs",
   "author": "Guilherme Waess <guilherme.waess@gmail.com>",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "guilhermewaess/SemVue"
+  },
+  "homepage": "http://guilhermewaess.github.io/SemVue",
   "keywords": [
     "vuejs",
     "vue-semanticui",
