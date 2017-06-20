@@ -6,10 +6,11 @@ let validProps;
 const AccordionConstructor = Vue.extend(Accordion);
 
 describe('Accordion', () => {
-    beforeEach(() => {
+    beforeEach((done) => {
         $().reset();
         validProps = { accordionId: 'accordionId' };
         accordion = new AccordionConstructor({ propsData: validProps }).$mount();
+        done();
     });
     describe('when constructed', () => {
         beforeEach((done) => {

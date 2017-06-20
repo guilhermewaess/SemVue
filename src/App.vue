@@ -2,7 +2,9 @@
   <div class="ui fluid container">
     <app-menu></app-menu>
     <div class="pusher">
-      <router-view></router-view>
+      <transition name="component-transition">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -21,12 +23,23 @@ export default {
 </script>
 
 <style lang="less">
-.ui.container{
+.ui.container {
+  padding-top: 1em;
+  padding-bottom: 1em;
   height: 100%;
 }
+
 .pusher {
   height: 100%;
   margin-left: 210px;
+}
+
+.component-transition-enter-active, .component-transition-leave-active {
+  transition: opacity .1s ease;
+}
+.component-transition-enter, .component-transition-leave-to
+/* .component-fade-leave-active for <2.1.8 */ {
+  opacity: 0;
 }
 </style>
 

@@ -5,7 +5,7 @@ let modalDoc;
 
 describe('ModalDoc', () => {
     beforeEach((done) => {
-        modalDoc = new Vue(ModalDoc).$mount();
+        modalDoc = new Vue(ModalDoc);
         done();
     });
 

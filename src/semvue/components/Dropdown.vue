@@ -34,9 +34,11 @@ export default {
         },
         iconProperty: {
             type: String,
+            default: '',
         },
         customClass: {
             type: String,
+            default: '',
         },
     },
     mounted() {
@@ -70,15 +72,10 @@ export default {
             const option = this.findSelectedOption(value);
             this.$emit('update:value', option);
         },
-        defineValue() {
-            if (!this.value) {
-                this.updateValue(this.options[0].value);
-            }
-        },
     },
     computed: {
         hasIcons() {
-            return this.iconProperty;
+            return !!this.iconProperty;
         },
     },
     watch: {

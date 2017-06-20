@@ -94,10 +94,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.ui.container {
-    padding-top: 1em;
-}
-
 .segment {
     padding: 0!important;
 }

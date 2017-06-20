@@ -164,17 +164,6 @@ export default {
             this.iconProperty = 'iconClass';
             this.dropdownOptions = this.defaultOptions;
         },
-        hasIcons() {
-            return !!this.iconProperty;
-        },
-    },
-    computed: {
-        iconButtonText() {
-            if (this.hasIcons()) {
-                return 'Only Text';
-            }
-            return 'Add Icons';
-        },
     },
 };
 </script>

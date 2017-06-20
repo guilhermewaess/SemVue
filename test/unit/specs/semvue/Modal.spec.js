@@ -6,10 +6,11 @@ let validProps;
 const ModalConstructor = Vue.extend(Modal);
 
 describe('Modal', () => {
-    beforeEach(() => {
+    beforeEach((done) => {
         $().reset();
         validProps = { modalId: 'modalId', showModal: false };
         modal = new ModalConstructor({ propsData: validProps }).$mount();
+        done();
     });
     describe('when constructed', () => {
         beforeEach((done) => {
