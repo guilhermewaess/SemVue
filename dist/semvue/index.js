@@ -341,8 +341,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        var accordionElement = $('#' + this.accordionId);
-
+        var accordionElement = $('.ui.accordion');
         accordionElement.accordion();
     }
 });
