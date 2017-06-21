@@ -52,6 +52,10 @@ describe('DropdownDoc', () => {
     });
 
     describe('when requested to changeOptions', () => {
+        beforeEach((done) => {
+            dropdownDoc.iconProperty = '';
+            done();
+        });
         it('should change dropdownOptions with anotherOptions if actual options is defaultOptions', () => {
             dropdownDoc.dropdownOptions = dropdownDoc.defaultOptions;
             dropdownDoc.changeOptions();
@@ -62,12 +66,25 @@ describe('DropdownDoc', () => {
             dropdownDoc.changeOptions();
             expect(dropdownDoc.dropdownOptions).to.deep.equal(dropdownDoc.defaultOptions);
         });
+        it('should restore iconProperty', (done) => {
+            dropdownDoc.changeOptions();
+            expect(dropdownDoc.iconProperty).to.equal('iconClass');
+            done();
+        });
     });
 
     describe('when requested to changeToOnlyIcons', () => {
-        it('should change dropdownOptions with optionWithoutText', () => {
+        beforeEach((done) => {
+            dropdownDoc.iconProperty = '';
             dropdownDoc.changeToOnlyIcons();
+            done();
+        });
+        it('should change dropdownOptions with optionWithoutText', () => {
             expect(dropdownDoc.dropdownOptions).to.deep.equal(dropdownDoc.optionsWithoutText);
+        });
+        it('should restore iconProperty', (done) => {
+            expect(dropdownDoc.iconProperty).to.equal('iconClass');
+            done();
         });
     });
 
@@ -84,15 +101,18 @@ describe('DropdownDoc', () => {
     });
 
     describe('when requested to changeToIconsAndText', () => {
-        it('should change dropdownOptions with defaultOptions', () => {
+        beforeEach((done) => {
+            dropdownDoc.iconProperty = '';
             dropdownDoc.dropdownOptions = dropdownDoc.anotherOptions;
             dropdownDoc.changeToIconsAndText();
+            done();
+        });
+        it('should change dropdownOptions with defaultOptions', () => {
             expect(dropdownDoc.dropdownOptions).to.deep.equal(dropdownDoc.defaultOptions);
         });
-        it('should change iconProperty with iconClass', () => {
-            dropdownDoc.iconProperty = '';
-            dropdownDoc.changeToIconsAndText();
+        it('should restore iconProperty', (done) => {
             expect(dropdownDoc.iconProperty).to.equal('iconClass');
+            done();
         });
     });
 });

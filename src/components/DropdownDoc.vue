@@ -147,6 +147,7 @@ export default {
     },
     methods: {
         changeOptions() {
+            this.restoreIconProperty();
             if (this.dropdownOptions === this.defaultOptions) {
                 this.dropdownOptions = this.anotherOptions;
             } else {
@@ -154,6 +155,7 @@ export default {
             }
         },
         changeToOnlyIcons() {
+            this.restoreIconProperty();
             this.dropdownOptions = this.optionsWithoutText;
         },
         changeToOnlyText() {
@@ -161,8 +163,11 @@ export default {
             this.iconProperty = '';
         },
         changeToIconsAndText() {
-            this.iconProperty = 'iconClass';
+            this.restoreIconProperty();
             this.dropdownOptions = this.defaultOptions;
+        },
+        restoreIconProperty() {
+            this.iconProperty = 'iconClass';
         },
     },
 };
@@ -173,7 +178,7 @@ pre {
     margin: 0!important;
 }
 
-.dropdown-code{
+.dropdown-code {
     padding: 0!important;
 }
 </style>

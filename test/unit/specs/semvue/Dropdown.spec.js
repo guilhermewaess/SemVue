@@ -137,8 +137,14 @@ describe('Dropdown', () => {
         let spy;
         beforeEach((done) => {
             spy = sinon.spy();
+            sinon.spy(dropdown, 'startDropdown');
             dropdown.$once('update:value', spy);
+
             dropdown.updateValue(2);
+            done();
+        });
+        afterEach((done) => {
+            dropdown.startDropdown.restore();
             done();
         });
         it('should trigger event only once', (done) => {
@@ -149,6 +155,12 @@ describe('Dropdown', () => {
             const selectedOption = dropdown.options[1];
             expect(spy).to.have.been.calledWith(selectedOption);
             done();
+        });
+        it('should startDropdown again', (done) => {
+            dropdown.$nextTick(() => {
+                expect(dropdown.startDropdown).to.have.callCount(1);
+                done();
+            });
         });
     });
 
@@ -178,9 +190,28 @@ describe('Dropdown', () => {
             dropdown.updateValue.restore();
             done();
         });
-        it('should request to updateValue with the first object on options array', (done) => {
+        it('should request to updateValue with the first object value on options array', (done) => {
             dropdown.$nextTick(() => {
                 expect(dropdown.updateValue).to.have.been.calledWith(3);
+                done();
+            });
+        });
+    });
+
+    describe('when iconProperty is changed', () => {
+        beforeEach((done) => {
+            sinon.spy(dropdown, 'updateValue');
+            dropdown.iconProperty = 'iconClass';
+            done();
+        });
+        afterEach((done) => {
+            dropdown.updateValue.restore();
+            done();
+        });
+        it('should request to updateValue with the first object value on options array', (done) => {
+            dropdown.$nextTick(() => {
+                const firstOptionValue = validProps.options[0].value;
+                expect(dropdown.updateValue).to.have.been.calledWith(firstOptionValue);
                 done();
             });
         });

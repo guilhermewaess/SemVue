@@ -71,6 +71,7 @@ export default {
         updateValue(value) {
             const option = this.findSelectedOption(value);
             this.$emit('update:value', option);
+            this.$nextTick(this.startDropdown);
         },
     },
     computed: {
@@ -80,6 +81,9 @@ export default {
     },
     watch: {
         options() {
+            this.updateValue(this.options[0].value);
+        },
+        iconProperty() {
             this.updateValue(this.options[0].value);
         },
     },
