@@ -414,6 +414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateValue: function updateValue(value) {
             var option = this.findSelectedOption(value);
             this.$emit('update:value', option);
+            this.$nextTick(this.startDropdown);
         }
     },
     computed: {
@@ -423,6 +424,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     watch: {
         options: function options() {
+            this.updateValue(this.options[0].value);
+        },
+        iconProperty: function iconProperty() {
             this.updateValue(this.options[0].value);
         }
     }
