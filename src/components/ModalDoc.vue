@@ -46,7 +46,7 @@
         modalId (String)
       </div>
       <div class="content">
-        <p class="transition hidden">Is a div id for modal, could be usefull when you have more than one modal on page with different styles</p>
+        <p>Is a div id for modal, could be usefull when you have more than one modal on page with different styles</p>
       </div>
   
       <div class="title">
@@ -54,7 +54,7 @@
         modalType (String | Not Required)
       </div>
       <div class="content">
-        <div class="transition hidden">
+        <div>
           <p>Used to define what type of modal you want,
             <a href="https://semantic-ui.com/modules/modal.html#/examples">you can see all modal types here</a>
           </p>

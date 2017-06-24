@@ -15,6 +15,10 @@
         <router-link class="item" :to="{ name: 'ModalDoc' }">
             Modal
         </router-link>
+
+        <router-link class="item" :to="{ name: 'RatingDoc' }">
+            Rating
+        </router-link>
     </div>
 </template>
 

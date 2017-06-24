@@ -5,6 +5,7 @@ import Welcome from '@/components/Welcome';
 import AccordionDoc from '@/components/AccordionDoc';
 import ModalDoc from '@/components/ModalDoc';
 import DropdownDoc from '@/components/DropdownDoc';
+import RatingDoc from '@/components/RatingDoc';
 
 Vue.use(Router);
 
@@ -42,6 +43,11 @@ export default new Router({
       path: '/ModalDoc',
       name: 'ModalDoc',
       component: ModalDoc,
+    },
+    {
+      path: '/RatingDoc',
+      name: 'RatingDoc',
+      component: RatingDoc,
     },
   ],
 });
