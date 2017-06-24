@@ -49,7 +49,9 @@ Soon a list of components with a big todo list will be displayed here ;D
  - [ ] Nag
  - [ ] Popup
  - [ ] Progress
- - [ ] Rating
+ - [x] Rating
+   - [x] Basic Implementation
+   - [x] Initialization options override 
  - [ ] Search
  - [ ] Shape
  - [ ] Sidebar
