@@ -1,6 +1,8 @@
-# SemVue
+![](https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png)
 
-> Semantic-ui components in you vue project
+----------
+
+> Semantic-ui modules/components in you Vue project
 
 ## Using
 
@@ -25,8 +27,37 @@ export default {
 ```
 
 Soon a list of components with a big todo list will be displayed here ;D
+## Components so far
 
+ - Accordion
+ - Dropdown
+ - Modal
 
+## To do and improvements
+- [ ] Accordion
+  - [x] Basic Implementation
+  - [ ] Initialization options override 
+- [ ] Checkbox
+- [ ] Dimmer
+- [ ] Dropdown
+  - [x] Basic Implementation
+  - [ ] Initialization options override
+- [ ] Embed
+- [ ] Modal
+  - [x] Basic Implementation
+  - [ ] Initialization options override 
+ - [ ] Nag
+ - [ ] Popup
+ - [ ] Progress
+ - [x] Rating
+   - [x] Basic Implementation
+   - [x] Initialization options override 
+ - [ ] Search
+ - [ ] Shape
+ - [ ] Sidebar
+ - [ ] Sticky
+ - [ ] Tab
+------
 
 # Site Demo/Semvue Build Setup
 
@@ -34,14 +65,8 @@ Soon a list of components with a big todo list will be displayed here ;D
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+# serve with hot reload at localhost:8081
+npm start
 
 # run unit tests
 npm run unit
@@ -49,5 +74,3 @@ npm run unit
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
