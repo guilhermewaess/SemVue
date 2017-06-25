@@ -72,7 +72,7 @@
           <td>Number</td>
           <td>Yes</td>
           <td>-</td>
-          <td>Any var to control current rating (also used to define initial rating)</td>
+          <td>Used to control current rating (also used to define initial rating)</td>
         </tr>
         <tr>
           <td>maxRating</td>

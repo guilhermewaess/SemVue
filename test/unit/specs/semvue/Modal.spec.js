@@ -41,8 +41,8 @@ describe('Modal', () => {
             expect(modal.closable).to.equal(true);
             done();
         });
-        it('should have modalType as string empty', (done) => {
-            expect(modal.modalType).to.equal('');
+        it('should have type as string empty', (done) => {
+            expect(modal.type).to.equal('');
             done();
         });
     });

@@ -45,78 +45,68 @@
         </div>
     
         <h3 class="ui dividing header">Props</h3>
-        <accordion accordionId="accordion-props" customClass="styled">
-            <div class="title">
-                <i class="dropdown icon"></i>
-                dropdownId (String)
-            </div>
-            <div class="content">
-                <p>Is a div id for dropdown, could be usefull when you have more than one dropdown on page with different styles</p>
-            </div>
-            <div class="title">
-                <i class="dropdown icon"></i>
-                value (Object)
-            </div>
-            <div class="content">
-                <p>Any var where the component will put the selected value</p>
-            </div>
-            <div class="title">
-                <i class="dropdown icon"></i>
-                options (Array)
-            </div>
-            <div class="content">
-                <div>
-                    <p>Any array with objects that will use to render options</p>
-                    <p>
-                        <strong>Must have property text and value</strong>
-                        <ul>
-                            <li>text: will render as text option</li>
-                            <li>value: will be like a key to get selected object on array</li>
-                        </ul>
-                    </p>
-                </div>
-            </div>
-            <div class="title">
-                <i class="dropdown icon"></i>
-                iconProperty (String | Not Required)
-            </div>
-            <div class="content">
-                <div class="transition hidden">
-                    <p>If you option has any icon to show, or the dropdown it self is made by icons, this prop defines wich property inside option contains the icon class</p>
-                    <pre>
-                        e.g.: iconProperty="iconClassProperty"
-                        option: { iconClassProperty: 'myIconClass' value: 0 };
-                        this will render: <i class="myIconClass icon`"></i>
-
-                        default is empty
-                    </pre>
-                </div>
-            </div>
+        <table class="ui definition table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>dropdownId</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>-</td>
+                    <td>Is a div id for dropdown</td>
+                </tr>
+                <tr>
+                    <td>value</td>
+                    <td>Number</td>
+                    <td>Yes</td>
+                    <td>-</td>
+                    <td>Used to control current selected value</td>
+                </tr>
+                <tr>
+                    <td>iconProperty</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>String Empty</td>
+                    <td>
+                        <p>If you option has any icon to show, or the dropdown it self is made by icons, this prop defines wich property inside option contains the icon class</p>
+                        <div class="ui segment dropdown-code">
+                            <pre>
+        e.g.: iconProperty="iconClassProperty"
+        option: { iconClassProperty: 'myIconClass' value: 0 };
+        this will render: &lti class="myIconClass icon`"&gt&lt/i&gt
+                                </pre>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>curstomClass</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>String empty</td>
+                    <td>Used to put any aditional class inside rating div </br>
+                        e.g. class="ui customClass dropdown"
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     
-            <div class="title">
-                <i class="dropdown icon"></i>
-                customClass (String | Not Required)
-            </div>
-            <div class="content">
-                <p class="transition hidden">Used to define differente type of dropdown style,
-                    <a href="https://semantic-ui.com/modules/dropdown.html"> you can see all dropdown styles here</a>
-                </p>
-                <pre>
-                    e.g.: customClass="large"
-                    default is empty<strong>(standard drodown)</strong>
-                </pre>
-            </div>
-        </accordion>
     </div>
 </template>
 
 <script>
-import { Accordion, Dropdown } from '@/semvue';
+import { Dropdown } from '@/semvue';
 
 export default {
     name: 'DropdownDoc',
     components: {
-        Accordion,
         Dropdown,
     },
     created() {

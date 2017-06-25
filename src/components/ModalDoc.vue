@@ -31,7 +31,7 @@
   
     <div class="ui segment">
       <pre>
-        &ltmodal modalId="modal1" modalType="basic" :showModal.sync="showBasicModal"&gt
+        &ltmodal modalId="modal1" type="basic" :showModal.sync="showBasicModal"&gt
           &ltdiv slot="header"&gtHello, i'm header&lt/div&gt
           &ltdiv slot="content"&gtHello, i'm content&lt/div&gt
           &ltdiv slot="footer"&gtHello, i'm footer&lt/div&gt
@@ -40,53 +40,51 @@
     </div>
   
     <h3 class="ui header">Props</h3>
-    <accordion accordionId="accordion-props" customClass="styled">
-      <div class="title">
-        <i class="dropdown icon"></i>
-        modalId (String)
-      </div>
-      <div class="content">
-        <p>Is a div id for modal, could be usefull when you have more than one modal on page with different styles</p>
-      </div>
+    <table class="ui definition table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>modalId</td>
+          <td>String</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Is a div id for modal</td>
+        </tr>
+        <tr>
+          <td>showModal</td>
+          <td>Boolean</td>
+          <td>Yes</td>
+          <td>-</td>
+          <td>Used to control modal visibility</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>String</td>
+          <td>No</td>
+          <td>String empty (standard modal)</td>
+          <td>The type of modal.
+            <a href="https://semantic-ui.com/modules/modal.html"> You can see all types here</a>
+          </td>
+        </tr>
+        <tr>
+          <td>closeable</td>
+          <td>Boolean</td>
+          <td>No</td>
+          <td>true</td>
+          <td>Used to define if should closed with any click out of modal or force user to take some action</td>
+        </tr>
+      </tbody>
+    </table>
   
-      <div class="title">
-        <i class="dropdown icon"></i>
-        modalType (String | Not Required)
-      </div>
-      <div class="content">
-        <div>
-          <p>Used to define what type of modal you want,
-            <a href="https://semantic-ui.com/modules/modal.html#/examples">you can see all modal types here</a>
-          </p>
-          <pre>
-                e.g.: modalType="basic"
-                      modalType="fullscreen"
-                default is empty<strong>(standard modal)</strong>
-              </pre>
-        </div>
-      </div>
-      <div class="title">
-        <i class="dropdown icon"></i>
-        showModal (Boolean)
-      </div>
-      <div class="content">
-        <p>Used to toggle modal visibility, start with false and change to true whenever you want to show modal</p>
-      </div>
-      <div class="title">
-        <i class="dropdown icon"></i>
-        closeable (Boolean | Not Required)
-      </div>
-      <div class="content">
-        <div>
-          <p>Used to define if modal should closed with any click or force user to take some action</p>
-          <p>Default value is
-            <strong>true</strong>
-          </p>
-        </div>
-      </div>
-    </accordion>
-  
-    <modal modalId="basic-modal" modalType="basic" :showModal.sync="showBasicModal">
+    <modal modalId="basic-modal" type="basic" :showModal.sync="showBasicModal">
       <div slot="header">Hello, i'm header</div>
       <div slot="content">Hello, i'm content</div>
       <div slot="footer">Hello, i'm footer</div>
@@ -102,13 +100,12 @@
 </template>
 
 <script>
-import { Modal, Accordion } from '@/semvue/index';
+import { Modal } from '@/semvue/index';
 
 export default {
   name: 'ModalDoc',
   components: {
     Modal,
-    Accordion,
   },
   data() {
     return {

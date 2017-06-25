@@ -1,5 +1,5 @@
 <template>
-    <div :id="modalId" :class="`ui ${modalType} modal`">
+    <div :id="modalId" :class="`ui ${type} modal`">
         <div class="header">
             <slot name="header">
                 Modal Title
@@ -36,7 +36,7 @@ export default {
             type: Boolean,
             default: true,
         },
-        modalType: {
+        type: {
             type: String,
             default: '',
         },

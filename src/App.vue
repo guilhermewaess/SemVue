@@ -1,8 +1,8 @@
 <template>
   <div class="ui fluid container">
     <a href="https://www.github.com/guilhermewaess/SemVue" target="_blank" class="ui black right corner huge label">
-        <i class="github icon"></i>
-      </a>
+      <i class="github icon"></i>
+    </a>
     <app-menu></app-menu>
     <div class="pusher">
       <transition name="component-transition">
@@ -26,6 +26,10 @@ export default {
 </script>
 
 <style lang="less">
+body {
+  height: auto;
+}
+
 .ui.container {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -37,11 +41,13 @@ export default {
   margin-left: 210px;
 }
 
-.component-transition-enter-active, .component-transition-leave-active {
+.component-transition-enter-active,
+.component-transition-leave-active {
   transition: opacity .1s ease;
 }
-.component-transition-enter, .component-transition-leave-to
-/* .component-fade-leave-active for <2.1.8 */ {
+
+.component-transition-enter,
+.component-transition-leave-to {
   opacity: 0;
 }
 </style>

@@ -57,9 +57,22 @@ describe('Rating', () => {
             expect(rating.options).to.deep.equal({});
             done();
         });
-        it('should call jquery selector with accordionId', (done) => {
+    });
+
+    describe('when mounted', () => {
+        beforeEach((done) => {
+            rating = new RatingConstructor({ propsData: validProps });
+            sinon.spy(rating, 'startRating');
+            rating.$mount();
+            done();
+        });
+        afterEach((done) => {
+            rating.startRating.restore();
+            done();
+        });
+        it('should startRating', (done) => {
             rating.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.ratingId}`);
+                expect(rating.startRating).to.have.callCount(1);
                 done();
             });
         });

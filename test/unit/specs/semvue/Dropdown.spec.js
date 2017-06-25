@@ -79,9 +79,22 @@ describe('Dropdown', () => {
             expect(dropdown.customClass).to.equal('');
             done();
         });
-        it('should call jquery selector with dropdownId', (done) => {
+    });
+
+    describe('when mounted', () => {
+        beforeEach((done) => {
+            dropdown = new DropdownConstructor({ propsData: validProps });
+            sinon.spy(dropdown, 'startDropdown');
+            dropdown.$mount();
+            done();
+        });
+        afterEach((done) => {
+            dropdown.startDropdown.restore();
+            done();
+        });
+        it('should startDropdown', (done) => {
             dropdown.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.dropdownId}`);
+                expect(dropdown.startDropdown).to.have.callCount(1);
                 done();
             });
         });
