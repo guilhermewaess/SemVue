@@ -7,7 +7,7 @@
     
         <i class="dropdown icon"></i>
         <div class="menu">
-            <div class="item" v-for="option in options" :data-value="option.value">
+            <div class="item" v-for="option in options" :data-value="option.value" :key="option.value">
                 <i :class="`${option[iconProperty]} icon`" v-if="hasIcons"></i>
                 {{ option.text }}
             </div>
@@ -92,5 +92,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.ui.dropdown {
+    width: 100%;
+}
 </style>
