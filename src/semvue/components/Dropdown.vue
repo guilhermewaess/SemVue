@@ -92,7 +92,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.ui.dropdown {
-    width: 100%;
-}
+
 </style>
