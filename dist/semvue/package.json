@@ -1,6 +1,6 @@
 {
   "name": "semvue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A semantic-ui components implemented in VueJs",
   "author": "Guilherme Waess <guilherme.waess@gmail.com>",
   "private": false,

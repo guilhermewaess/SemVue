@@ -26,12 +26,13 @@ export default {
 };
 ```
 
-Soon a list of components with a big todo list will be displayed here ;D
 ## Components so far
 
  - Accordion
  - Dropdown
  - Modal
+ - Popup
+ - Rating
 
 ## To do and improvements
 - [ ] Accordion
@@ -47,7 +48,9 @@ Soon a list of components with a big todo list will be displayed here ;D
   - [x] Basic Implementation
   - [ ] Initialization options override 
  - [ ] Nag
- - [ ] Popup
+ - [x] Popup
+   - [x] Basic Implementation
+   - [x] Initialization options override 
  - [ ] Progress
  - [x] Rating
    - [x] Basic Implementation

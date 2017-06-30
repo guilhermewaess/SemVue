@@ -1,6 +1,8 @@
-# SemVue
+![](https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png)
 
-> Semantic-ui components in you vue project
+----------
+
+> Semantic-ui modules/components in you Vue project
 
 ## Using
 
@@ -24,4 +26,38 @@ export default {
 };
 ```
 
-Soon a list of components with a big todo list will be displayed here ;D
+## Components so far
+
+ - Accordion
+ - Dropdown
+ - Modal
+ - Popup
+ - Rating
+
+## To do and improvements
+- [ ] Accordion
+  - [x] Basic Implementation
+  - [ ] Initialization options override 
+- [ ] Checkbox
+- [ ] Dimmer
+- [ ] Dropdown
+  - [x] Basic Implementation
+  - [ ] Initialization options override
+- [ ] Embed
+- [ ] Modal
+  - [x] Basic Implementation
+  - [ ] Initialization options override 
+ - [ ] Nag
+ - [x] Popup
+   - [x] Basic Implementation
+   - [x] Initialization options override 
+ - [ ] Progress
+ - [x] Rating
+   - [x] Basic Implementation
+   - [x] Initialization options override 
+ - [ ] Search
+ - [ ] Shape
+ - [ ] Sidebar
+ - [ ] Sticky
+ - [ ] Tab
+------
