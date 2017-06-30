@@ -11,7 +11,7 @@
     
         <div class="ui grid">
             <div class="three wide column">
-                <div class="ui sub header">Position</div>
+                <div class="ui sub header">Position*</div>
                 <dropdown dropdownId="dropdown-positions" :options="positions" :value.sync="position" customClass="large fluid label"></dropdown>
             </div>
             <div class="two wide column">
@@ -23,7 +23,8 @@
                 <dropdown dropdownId="dropdown-transitions" :options="transitions" :value.sync="transition" customClass="large fluid label"></dropdown>
             </div>
         </div>
-    
+        <p>* Position: If space is not available, it will automatically search for a similar alternative position to use.</p>
+
         <h3 class="ui dividing header">Usage</h3>
         <div class="ui segment code">
             <pre>
@@ -104,17 +105,17 @@
             </tbody>
         </table>
     
-        <popup popupId="nice-popup" :trigger="trigger.value" targetSelector=".popup-example-element" :options="popupOptions" customClass="fluid">
-            <div class="ui three column divided center aligned grid">
-                <div class="column">
+        <popup popupId="nice-popup" :trigger="trigger.value" targetSelector=".popup-example-element" :options="popupOptions" customClass="flowing">
+            <div class="ui horizontal segments">
+                <div class="ui center aligned segment">
                     <h4 class="ui header">Selected Position</h4>
                     <p>{{ position.text }}</p>
                 </div>
-                <div class="column">
+                <div class="ui center aligned segment">
                     <h4 class="ui header">Selected Trigger</h4>
                     <p>{{ trigger.text }}</p>
                 </div>
-                <div class="column">
+                <div class="ui center aligned segment">
                     <h4 class="ui header">Selected Transition</h4>
                     <p>{{ transition.text }}</p>
                 </div>
