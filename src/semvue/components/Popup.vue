@@ -1,5 +1,5 @@
 <template>
-    <div :id="popupId" :class="`ui ${customClass} popup`">
+    <div :id="popupId" :class="`ui ${customClass} special popup`">
         <slot></slot>
     </div>
 </template>
@@ -12,6 +12,7 @@ function createDefaultOptions() {
         on: this.trigger,
         target: this.targetSelector,
         popup: `#${this.popupId}`,
+        inline: false,
     };
 }
 
@@ -48,8 +49,19 @@ export default {
             const options = Object.assign(defaultOptions, this.options);
             const popupElement = $(`${this.targetSelector}`);
 
-            debugger;
             popupElement.popup(options);
+        },
+    },
+    watch: {
+        trigger() {
+            this.startPopup();
+        },
+        targetSelector() {
+            this.startPopup();
+        },
+        options: {
+            handler() { this.startPopup(); },
+            deep: true,
         },
     },
 };

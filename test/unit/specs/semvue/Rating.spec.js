@@ -133,40 +133,40 @@ describe('Rating', () => {
                 });
             });
         });
+    });
 
-        describe('when onRate is executed', () => {
-            let spy;
-            beforeEach((done) => {
-                spy = sinon.spy();
-                rating.$once('update:currentRating', spy);
-                rating.onRate(3);
-                done();
-            });
-            it('should trigger update:currentRating event only once', (done) => {
-                expect(spy).to.have.been.callCount(1);
-                done();
-            });
-            it('should trigger a event update:currentRating with new rate', (done) => {
-                expect(spy).to.have.been.calledWith(3);
-                done();
-            });
+    describe('when onRate is executed', () => {
+        let spy;
+        beforeEach((done) => {
+            spy = sinon.spy();
+            rating.$once('update:currentRating', spy);
+            rating.onRate(3);
+            done();
         });
+        it('should trigger update:currentRating event only once', (done) => {
+            expect(spy).to.have.been.callCount(1);
+            done();
+        });
+        it('should trigger a event update:currentRating with new rate', (done) => {
+            expect(spy).to.have.been.calledWith(3);
+            done();
+        });
+    });
 
-        describe('when currentRating is changed', () => {
-            beforeEach((done) => {
-                sinon.spy(rating, 'startRating');
-                rating.currentRating = 3;
+    describe('when currentRating is changed', () => {
+        beforeEach((done) => {
+            sinon.spy(rating, 'startRating');
+            rating.currentRating = 3;
+            done();
+        });
+        afterEach((done) => {
+            rating.startRating.restore();
+            done();
+        });
+        it('should start rating again', (done) => {
+            rating.$nextTick(() => {
+                expect(rating.startRating).to.have.callCount(1);
                 done();
-            });
-            afterEach((done) => {
-                rating.startRating.restore();
-                done();
-            });
-            it('should start rating again', (done) => {
-                rating.$nextTick(() => {
-                    expect(rating.startRating).to.have.callCount(1);
-                    done();
-                });
             });
         });
     });
