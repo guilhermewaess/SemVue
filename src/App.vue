@@ -26,8 +26,9 @@ export default {
 </script>
 
 <style lang="less">
+html,
 body {
-  height: auto;
+  height: 100%
 }
 
 .ui.container {

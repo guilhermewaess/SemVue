@@ -104,7 +104,7 @@
           <td>Object</td>
           <td>No</td>
           <td>Object empty</td>
-          <td>Overrides default component options.<a href="https://semantic-ui.com/modules/rating.html"> You can see all options here</a></td>
+          <td>Overrides component options.<a href="https://semantic-ui.com/modules/rating.html"> You can see all options here</a></td>
         </tr>
       </tbody>
     </table>

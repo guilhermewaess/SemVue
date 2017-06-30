@@ -3,8 +3,9 @@ import Router from 'vue-router';
 
 import Welcome from '@/components/Welcome';
 import AccordionDoc from '@/components/AccordionDoc';
-import ModalDoc from '@/components/ModalDoc';
 import DropdownDoc from '@/components/DropdownDoc';
+import ModalDoc from '@/components/ModalDoc';
+import PopupDoc from '@/components/PopupDoc';
 import RatingDoc from '@/components/RatingDoc';
 
 Vue.use(Router);
@@ -45,10 +46,14 @@ export default new Router({
       component: ModalDoc,
     },
     {
+      path: '/PopupDoc',
+      name: 'PopupDoc',
+      component: PopupDoc,
+    },
+    {
       path: '/RatingDoc',
       name: 'RatingDoc',
       component: RatingDoc,
     },
   ],
 });
-
