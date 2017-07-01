@@ -16,10 +16,19 @@ export default {
             type: String,
             default: '',
         },
+        options: {
+            type: Object,
+            default() { return {}; },
+        },
     },
     mounted() {
-        const accordionElement = $('.ui.accordion');
-        accordionElement.accordion();
+        this.startAccordion();
+    },
+    methods: {
+        startAccordion() {
+            const accordionElement = $(`#${this.accordionId}`);
+            accordionElement.accordion(this.options);
+        },
     },
 };
 </script>
