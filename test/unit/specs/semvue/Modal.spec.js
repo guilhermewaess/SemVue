@@ -33,10 +33,6 @@ describe('Modal', () => {
             expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "showModal"'); // eslint-disable-line
             done();
         });
-        it('should have shouldActivate equals prop showModal', (done) => {
-            expect(modal.shouldActivate).to.equal(validProps.showModal);
-            done();
-        });
         it('should have closable true', (done) => {
             expect(modal.closable).to.equal(true);
             done();
@@ -45,48 +41,33 @@ describe('Modal', () => {
             expect(modal.type).to.equal('');
             done();
         });
+        it('should have options as object empty', (done) => {
+            expect(modal.options).to.deep.equal({});
+            done();
+        });
     });
 
-    describe('when showModal prop changes to true', () => {
+    describe('when showModal prop changes', () => {
         beforeEach((done) => {
+            sinon.spy(modal, 'toggleModal');
             modal.showModal = true;
             done();
         });
-        it('should call jquery selector with modalId', (done) => {
-            modal.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.modalId}`);
-                done();
-            });
+        afterEach((done) => {
+            modal.toggleModal.restore();
+            done();
         });
-        it('should configure modal with closable', (done) => {
+        it('should toggleModal', (done) => {
             modal.$nextTick(() => {
-                const configurationCall = $().modal.args[0][0];
-                expect(configurationCall.closable).to.equal(modal.closable);
-                done();
-            });
-        });
-        it('should configure modal with onHidden function', (done) => {
-            modal.$nextTick(() => {
-                const configurationCall = $().modal.args[0][0];
-                const jsonCallHiddenFunction = JSON.stringify(configurationCall.onHidden);
-                const jsonModalHiddenFunction = JSON.stringify(modal.onHiddenCallback);
-                expect(jsonCallHiddenFunction).to.deep.equal(jsonModalHiddenFunction);
-                done();
-            });
-        });
-        it('should show modal', (done) => {
-            modal.$nextTick(() => {
-                expect($().modal).to.have.been.calledWith('show');
+                expect(modal.toggleModal).to.have.callCount(1);
                 done();
             });
         });
     });
 
-    describe('when showModal prop changes to false', () => {
+    describe('when request to toggleModal', () => {
         beforeEach((done) => {
-            validProps.showModal = true;
-            modal = new ModalConstructor({ propsData: validProps }).$mount();
-            modal.showModal = false;
+            modal.toggleModal();
             done();
         });
         it('should call jquery selector with modalId', (done) => {
@@ -95,23 +76,63 @@ describe('Modal', () => {
                 done();
             });
         });
-        it('should hide modal', (done) => {
-            modal.$nextTick(() => {
-                expect($().modal).to.have.been.calledWith('hide');
-                done();
+
+        describe('and show modal is true', () => {
+            beforeEach(() => {
+                modal.showModal = true;
+                $().reset();
+                modal.toggleModal();
+            });
+            it('should show modal', (done) => {
+                modal.$nextTick(() => {
+                    expect($().modal).to.have.been.calledWith('show');
+                    done();
+                });
+            });
+            it('should configure modal with closable', (done) => {
+                modal.$nextTick(() => {
+                    const configurationCall = $().modal.args[0][0];
+                    expect(configurationCall.closable).to.equal(modal.closable);
+                    done();
+                });
+            });
+            it('should configure modal with onHidden function', (done) => {
+                modal.$nextTick(() => {
+                    const configurationCall = $().modal.args[0][0];
+                    const jsonCallHiddenFunction = JSON.stringify(configurationCall.onHidden);
+                    const jsonModalHiddenFunction = JSON.stringify(modal.onHiddenCallback);
+                    expect(jsonCallHiddenFunction).to.deep.equal(jsonModalHiddenFunction);
+                    done();
+                });
             });
         });
-        it('should not configure modal', (done) => {
-            modal.$nextTick(() => {
-                const firstCall = $().modal.args[0][0];
-                expect(firstCall).to.be.a('string');
-                done();
+
+        describe('and show modal is false', () => {
+            it('should hide modal', (done) => {
+                modal.$nextTick(() => {
+                    expect($().modal).to.have.been.calledWith('hide');
+                    done();
+                });
             });
         });
-        it('should call modal only once to hide', (done) => {
-            modal.$nextTick(() => {
-                expect($().modal).to.have.callCount(1);
+
+        describe('and have options sent on props', () => {
+            beforeEach((done) => {
+                $().reset();
+                validProps.showModal = true;
+                validProps.options = {
+                    optionToOverride: 'abc',
+                };
+                modal = new ModalConstructor({ propsData: validProps }).$mount();
+                modal.toggleModal();
                 done();
+            });
+            it('should configure modal with the new options', (done) => {
+                modal.$nextTick(() => {
+                    const configurationCall = $().modal.args[0][0];
+                    expect(configurationCall.optionToOverride).to.equal('abc');
+                    done();
+                });
             });
         });
     });

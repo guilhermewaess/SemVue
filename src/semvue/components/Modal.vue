@@ -21,6 +21,14 @@
 </template>
 
 <script>
+function createDefaultOptions() {
+    return {
+        closable: this.closable,
+        onHidden: this.onHiddenCallback,
+    };
+}
+
+
 export default {
     name: 'modal',
     props: {
@@ -40,30 +48,31 @@ export default {
             type: String,
             default: '',
         },
-    },
-    data() {
-        return {
-            shouldActivate: this.showModal,
-        };
+        options: {
+            type: Object,
+            default() { return {}; },
+        },
     },
     methods: {
         onHiddenCallback() {
             this.$emit('update:showModal', false);
         },
-    },
-    watch: {
-        showModal() {
+        toggleModal() {
+            const defaultOptions = createDefaultOptions.call(this);
             const toggleDecision = this.showModal ? 'show' : 'hide';
             const modalElement = $(`#${this.modalId}`);
+            const options = Object.assign(defaultOptions, this.options);
 
             if (this.showModal) {
-                modalElement.modal({
-                    closable: this.closable,
-                    onHidden: this.onHiddenCallback,
-                });
+                modalElement.modal(options);
             }
 
             modalElement.modal(toggleDecision);
+        },
+    },
+    watch: {
+        showModal() {
+            this.toggleModal();
         },
     },
 };
