@@ -21,11 +21,18 @@
 </template>
 
 <script>
-function createDefaultOptions() {
-    return {
+function createModalOptions() {
+    const defaultOptions = {
         closable: this.closable,
-        onHidden: this.onHiddenCallback,
+        onHidden: this.onHidden,
     };
+    const options = Object.assign(defaultOptions, this.options);
+
+    if (this.options.onHidden) {
+        options.onHidden = this.onHidden.bind(this, this.options.onHidden);
+    }
+
+    return options;
 }
 
 
@@ -54,14 +61,16 @@ export default {
         },
     },
     methods: {
-        onHiddenCallback() {
+        onHidden(customCallback) {
+            if (customCallback) {
+                customCallback();
+            }
             this.$emit('update:showModal', false);
         },
         toggleModal() {
-            const defaultOptions = createDefaultOptions.call(this);
             const toggleDecision = this.showModal ? 'show' : 'hide';
             const modalElement = $(`#${this.modalId}`);
-            const options = Object.assign(defaultOptions, this.options);
+            const options = createModalOptions.call(this);
 
             if (this.showModal) {
                 modalElement.modal(options);

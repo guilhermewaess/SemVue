@@ -81,6 +81,13 @@
           <td>true</td>
           <td>Used to define if should closed with any click out of modal or force user to take some action</td>
         </tr>
+        <tr>
+          <td>options</td>
+          <td>Object</td>
+          <td>No</td>
+          <td>Object empty</td>
+          <td>Overrides component options.<a href="https://semantic-ui.com/modules/modal.html"> You can see all options here</a></td>
+        </tr>
       </tbody>
     </table>
   

@@ -100,7 +100,7 @@ describe('Modal', () => {
                 modal.$nextTick(() => {
                     const configurationCall = $().modal.args[0][0];
                     const jsonCallHiddenFunction = JSON.stringify(configurationCall.onHidden);
-                    const jsonModalHiddenFunction = JSON.stringify(modal.onHiddenCallback);
+                    const jsonModalHiddenFunction = JSON.stringify(modal.onHidden);
                     expect(jsonCallHiddenFunction).to.deep.equal(jsonModalHiddenFunction);
                     done();
                 });
@@ -121,6 +121,7 @@ describe('Modal', () => {
                 $().reset();
                 validProps.showModal = true;
                 validProps.options = {
+                    onHidden: sinon.spy(),
                     optionToOverride: 'abc',
                 };
                 modal = new ModalConstructor({ propsData: validProps }).$mount();
@@ -134,24 +135,62 @@ describe('Modal', () => {
                     done();
                 });
             });
+            it('should configure modal onHidden function with customCallback', (done) => {
+                modal.$nextTick(() => {
+                    const onHidden = modal.onHidden.bind(modal, validProps.options.onHidden);
+                    const configurationCall = $().modal.args[0][0];
+                    const jsonCallHiddenFunction = JSON.stringify(configurationCall.onHidden);
+                    const jsonModalHiddenFunction = JSON.stringify(onHidden);
+
+                    expect(jsonCallHiddenFunction).to.deep.equal(jsonModalHiddenFunction);
+                    done();
+                });
+            });
         });
     });
 
-    describe('when onHiddenCallback is executed', () => {
-        let spy;
+    describe('when onHidden is executed', () => {
+        let customCallback;
+        let showModalSpy;
         beforeEach((done) => {
-            spy = sinon.spy();
-            modal.$once('update:showModal', spy);
-            modal.onHiddenCallback();
+            customCallback = sinon.spy();
+            showModalSpy = sinon.spy();
+            modal.$once('update:showModal', showModalSpy);
             done();
         });
-        it('should trigger event only once', (done) => {
-            expect(spy).to.have.been.callCount(1);
-            done();
+        describe('and doesnt have customCallback', () => {
+            beforeEach((done) => {
+                modal.onHidden();
+                done();
+            });
+            it('should trigger update:showModal only once', (done) => {
+                expect(showModalSpy).to.have.been.callCount(1);
+                done();
+            });
+            it('should trigger a event update:showModal with false', (done) => {
+                expect(showModalSpy).to.have.been.calledWith(false);
+                done();
+            });
+            it('should not call customCallback', () => {
+                expect(customCallback).to.have.been.callCount(0);
+            });
         });
-        it('should trigger a event update:showModal with false', (done) => {
-            expect(spy).to.have.been.calledWith(false);
-            done();
+        describe('and have customCallBack', () => {
+            beforeEach((done) => {
+                modal.onHidden(customCallback);
+                done();
+            });
+            it('should trigger update:showModal only once', (done) => {
+                expect(showModalSpy).to.have.been.callCount(1);
+                done();
+            });
+            it('should trigger a event update:showModal with false', (done) => {
+                expect(showModalSpy).to.have.been.calledWith(false);
+                done();
+            });
+            it('should call customCallback', () => {
+                expect(customCallback).to.have.been.callCount(1);
+            });
         });
     });
 });
