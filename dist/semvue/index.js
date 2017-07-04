@@ -177,13 +177,19 @@ module.exports = function normalizeComponent (
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = { "default": __webpack_require__(24), __esModule: true };
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(2)(function(){
+module.exports = !__webpack_require__(3)(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = function(exec){
@@ -195,7 +201,7 @@ module.exports = function(exec){
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -204,18 +210,12 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(24), __esModule: true };
 
 /***/ }),
 /* 6 */
@@ -826,11 +826,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         customClass: {
             type: String,
             default: ''
+        },
+        options: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
         }
     },
     mounted: function mounted() {
-        var accordionElement = $('.ui.accordion');
-        accordionElement.accordion();
+        this.startAccordion();
+    },
+
+    methods: {
+        startAccordion: function startAccordion() {
+            var accordionElement = $('#' + this.accordionId);
+            accordionElement.accordion(this.options);
+        }
     }
 });
 
@@ -926,7 +938,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
 
+
+
+function createModalOptions() {
+    var defaultOptions = {
+        closable: this.closable,
+        onHidden: this.onHidden
+    };
+    var options = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()(defaultOptions, this.options);
+
+    if (this.options.onHidden) {
+        options.onHidden = this.onHidden.bind(this, this.options.onHidden);
+    }
+
+    return options;
+}
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'modal',
@@ -948,32 +977,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         type: {
             type: String,
             default: ''
+        },
+        options: {
+            type: Object,
+            default: function _default() {
+                return {};
+            }
         }
     },
-    data: function data() {
-        return {
-            shouldActivate: this.showModal
-        };
-    },
-
     methods: {
-        onHiddenCallback: function onHiddenCallback() {
+        onHidden: function onHidden(customCallback) {
+            if (customCallback) {
+                customCallback();
+            }
             this.$emit('update:showModal', false);
+        },
+        toggleModal: function toggleModal() {
+            var toggleDecision = this.showModal ? 'show' : 'hide';
+            var modalElement = $('#' + this.modalId);
+            var options = createModalOptions.call(this);
+
+            if (this.showModal) {
+                modalElement.modal(options);
+            }
+
+            modalElement.modal(toggleDecision);
         }
     },
     watch: {
         showModal: function showModal() {
-            var toggleDecision = this.showModal ? 'show' : 'hide';
-            var modalElement = $('#' + this.modalId);
-
-            if (this.showModal) {
-                modalElement.modal({
-                    closable: this.closable,
-                    onHidden: this.onHiddenCallback
-                });
-            }
-
-            modalElement.modal(toggleDecision);
+            this.toggleModal();
         }
     }
 });
@@ -984,7 +1017,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
 
 
@@ -1063,7 +1096,7 @@ function createDefaultOptions() {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
 
 
@@ -1151,7 +1184,7 @@ module.exports = function(it){
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(4);
+var isObject = __webpack_require__(5);
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
@@ -1222,8 +1255,8 @@ module.exports = function(fn, that, length){
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(4)
-  , document = __webpack_require__(3).document
+var isObject = __webpack_require__(5)
+  , document = __webpack_require__(4).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
 module.exports = function(it){
@@ -1243,7 +1276,7 @@ module.exports = (
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(3)
+var global    = __webpack_require__(4)
   , core      = __webpack_require__(6)
   , ctx       = __webpack_require__(29)
   , hide      = __webpack_require__(34)
@@ -1320,7 +1353,7 @@ module.exports = function(it, key){
 
 var dP         = __webpack_require__(37)
   , createDesc = __webpack_require__(42);
-module.exports = __webpack_require__(1) ? function(object, key, value){
+module.exports = __webpack_require__(2) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
   object[key] = value;
@@ -1331,7 +1364,7 @@ module.exports = __webpack_require__(1) ? function(object, key, value){
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(1) && !__webpack_require__(2)(function(){
+module.exports = !__webpack_require__(2) && !__webpack_require__(3)(function(){
   return Object.defineProperty(__webpack_require__(30)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
@@ -1350,7 +1383,7 @@ var getKeys  = __webpack_require__(40)
   , $assign  = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(2)(function(){
+module.exports = !$assign || __webpack_require__(3)(function(){
   var A = {}
     , B = {}
     , S = Symbol()
@@ -1383,7 +1416,7 @@ var anObject       = __webpack_require__(26)
   , toPrimitive    = __webpack_require__(48)
   , dP             = Object.defineProperty;
 
-exports.f = __webpack_require__(1) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+exports.f = __webpack_require__(2) ? Object.defineProperty : function defineProperty(O, P, Attributes){
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -1468,7 +1501,7 @@ module.exports = function(key){
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(3)
+var global = __webpack_require__(4)
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
@@ -1513,7 +1546,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(4);
+var isObject = __webpack_require__(5);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){

@@ -35,18 +35,17 @@ export default {
  - Rating
 
 ## To do and improvements
-- [ ] Accordion
+- [x] Accordion
   - [x] Basic Implementation
-  - [ ] Initialization options override 
+  - [x] Initialization options override 
 - [ ] Checkbox
 - [ ] Dimmer
-- [ ] Dropdown
+- [x] Dropdown
   - [x] Basic Implementation
-  - [ ] Initialization options override
 - [ ] Embed
-- [ ] Modal
+- [x] Modal
   - [x] Basic Implementation
-  - [ ] Initialization options override 
+  - [x] Initialization options override 
  - [ ] Nag
  - [x] Popup
    - [x] Basic Implementation
