@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import _ from 'lodash';
-
 function createDimmerOptions() {
     const defaultOptions = {
         onHide: this.onHide,
@@ -18,10 +16,6 @@ function createDimmerOptions() {
     }
 
     return options;
-}
-
-function defineSelector() {
-    return this.targetSelector || '.ui.page.dimmer';
 }
 
 export default {
@@ -36,7 +30,8 @@ export default {
             required: true,
         },
         targetSelector: {
-            validator: prop => prop || _.some(this.customClass, 'page'),
+            type: String,
+            required: true,
         },
         customClass: {
             type: String,
@@ -48,17 +43,7 @@ export default {
         },
     },
     mounted() {
-        this.selector = defineSelector.call(this);
         this.toggleDimmer();
-    },
-    beforeDestroy() {
-        this.$emit('update:showDimmer', false);
-        this.changeDimmerStatus('hide');
-    },
-    data() {
-        return {
-            selector: null,
-        };
     },
     methods: {
         onHide(customCallback) {
@@ -69,17 +54,11 @@ export default {
         },
         toggleDimmer() {
             const toggleDecision = this.showDimmer ? 'show' : 'hide';
-            this.changeDimmerStatus(toggleDecision);
-        },
-        changeDimmerStatus(status) {
-            const elementToDimmer = $(this.selector);
+            const elementToDimmer = $(this.targetSelector);
 
-            if (this.showDimmer) {
-                const options = createDimmerOptions.call(this);
-                elementToDimmer.dimmer(options);
-            }
-
-            elementToDimmer.dimmer(status);
+            const options = createDimmerOptions.call(this);
+            elementToDimmer.dimmer(options);
+            elementToDimmer.dimmer(toggleDecision);
         },
     },
     watch: {
