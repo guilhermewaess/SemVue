@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Welcome from '@/components/Welcome';
 import AccordionDoc from '@/components/AccordionDoc';
+import DimmerDoc from '@/components/DimmerDoc';
 import DropdownDoc from '@/components/DropdownDoc';
 import ModalDoc from '@/components/ModalDoc';
 import PopupDoc from '@/components/PopupDoc';
@@ -34,6 +35,11 @@ export default new Router({
       path: '/AccordionDoc',
       name: 'AccordionDoc',
       component: AccordionDoc,
+    },
+    {
+      path: '/DimmerDoc',
+      name: 'DimmerDoc',
+      component: DimmerDoc,
     },
     {
       path: '/DropDownDoc',
