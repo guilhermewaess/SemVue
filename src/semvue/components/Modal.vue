@@ -37,7 +37,7 @@ function createModalOptions() {
 
 
 export default {
-    name: 'modal',
+    name: 'Modal',
     props: {
         modalId: {
             validator: prop => prop.length,

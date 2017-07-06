@@ -8,6 +8,10 @@
             Accordion
         </router-link>
 
+        <router-link class="item" :to="{ name: 'DimmerDoc' }">
+            Dimmer
+        </router-link>
+
         <router-link class="item" :to="{ name: 'DropDownDoc' }">
             Dropdown
         </router-link>
