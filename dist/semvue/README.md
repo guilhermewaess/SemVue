@@ -29,6 +29,7 @@ export default {
 ## Components so far
 
  - Accordion
+ - Dimmer
  - Dropdown
  - Modal
  - Popup
@@ -39,7 +40,9 @@ export default {
   - [x] Basic Implementation
   - [x] Initialization options override 
 - [ ] Checkbox
-- [ ] Dimmer
+- [x] Dimmer
+  - [x] Basic Implementation
+  - [x] Initialization options override 
 - [x] Dropdown
   - [x] Basic Implementation
 - [ ] Embed
