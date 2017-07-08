@@ -7,7 +7,7 @@
 <script>
 function createDimmerOptions() {
     const defaultOptions = {
-        onHide: this.onHide
+        onHide: this.onHide,
     };
     const options = Object.assign(defaultOptions, this.options);
 
