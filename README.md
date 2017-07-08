@@ -1,4 +1,13 @@
-![](https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png)
+<p align="center"><a href="https://vuejs.org" target="_blank"><img width="400"src="https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png"></a></p>
+
+<p align="center">
+  <a href="https://circleci.com/gh/guilhermewaess/SemVue/tree/master"><img src="https://img.shields.io/circleci/project/guilhermewaess/SemVue/master.svg" alt="Build Status"></a>
+  <a href="https://codecov.io/github/guilhermewaess/SemVue?branch=master"><img src="https://img.shields.io/codecov/c/github/guilhermewaess/SemVue/master.svg" alt="Coverage Status"></a>
+  <a href="https://www.npmjs.com/package/semvue"><img src="https://img.shields.io/npm/dm/semvue.svg" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/semvue"><img src="https://img.shields.io/npm/v/semvue.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/semvue"><img src="https://img.shields.io/npm/l/semvue.svg" alt="License"></a>
+</p>
+
 
 ----------
 
