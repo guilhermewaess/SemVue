@@ -3,5 +3,13 @@ machine:
     version: 7
 
 dependencies:
+  pre:
+    - rm -rf ./node_modules
   post:
     - npm run build
+  cache_directories:
+    - ~/.npm
+
+test:
+  post:
+    - bash <(curl -s https://codecov.io/bash)
