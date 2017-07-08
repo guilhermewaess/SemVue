@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A semantic-ui components implemented in VueJs",
   "author": "Guilherme Waess <guilherme.waess@gmail.com>",
+  "license": "MIT",
   "private": false,
   "keywords": [
     "vuejs",
