@@ -5,7 +5,6 @@
   <a href="https://codecov.io/github/guilhermewaess/SemVue?branch=master"><img src="https://img.shields.io/codecov/c/github/guilhermewaess/SemVue/master.svg" alt="Coverage Status"></a>
   <a href="https://www.npmjs.com/package/semvue"><img src="https://img.shields.io/npm/dm/semvue.svg" alt="Downloads"></a>
   <a href="https://www.npmjs.com/package/semvue"><img src="https://img.shields.io/npm/v/semvue.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/semvue"><img src="https://img.shields.io/npm/l/semvue.svg" alt="License"></a>
 </p>
 
 
