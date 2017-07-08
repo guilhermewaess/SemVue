@@ -19,6 +19,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/sitedemo/dev-server.js",
+    "build": "npm run build-semvue && npm run build-demo",
     "build-demo": "node build/sitedemo/build.js",
     "build-semvue": "webpack --progress --hide-modules --config build/semvue/webpack.semvue.build.js && webpack --progress --hide-modules --config build/semvue/webpack.semvue.build.min.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
