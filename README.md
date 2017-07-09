@@ -1,4 +1,4 @@
-<p align="center"><a href="https://vuejs.org" target="_blank"><img width="400"src="https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png"></a></p>
+<p align="center"><a href="https://guilhermewaess.github.io/SemVue" target="_blank"><img width="400"src="https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png"></a></p>
 
 <p align="center">
   <a href="https://circleci.com/gh/guilhermewaess/SemVue/tree/master"><img src="https://img.shields.io/circleci/project/guilhermewaess/SemVue/master.svg" alt="Build Status"></a>
