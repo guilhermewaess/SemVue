@@ -24,6 +24,10 @@
             Popup
         </router-link>
 
+        <router-link class="item" :to="{ name: 'ProgressDoc' }">
+            Progress
+        </router-link>
+
         <router-link class="item" :to="{ name: 'RatingDoc' }">
             Rating
         </router-link>

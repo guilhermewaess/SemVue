@@ -7,6 +7,7 @@ import DimmerDoc from '@/components/DimmerDoc';
 import DropdownDoc from '@/components/DropdownDoc';
 import ModalDoc from '@/components/ModalDoc';
 import PopupDoc from '@/components/PopupDoc';
+import ProgressDoc from '@/components/ProgressDoc';
 import RatingDoc from '@/components/RatingDoc';
 
 Vue.use(Router);
@@ -55,6 +56,11 @@ export default new Router({
       path: '/PopupDoc',
       name: 'PopupDoc',
       component: PopupDoc,
+    },
+    {
+      path: '/ProgressDoc',
+      name: 'ProgressDoc',
+      component: ProgressDoc,
     },
     {
       path: '/RatingDoc',
