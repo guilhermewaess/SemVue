@@ -3,7 +3,7 @@
         <div class="bar">
             <div class="progress"></div>
         </div>
-        <div class="label">Clicking</div>
+        <slot name="start-label"></slot>
     </div>
 </template>
 
@@ -89,7 +89,7 @@ export default {
             this.progressElement.progress('decrement');
         },
         updateProgress(progress) {
-            this.progressElement.progress('increment', progress);
+            this.progressElement.progress('update progress', progress);
         },
         complete() {
             this.progressElement.progress('complete');
