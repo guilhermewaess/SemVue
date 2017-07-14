@@ -357,11 +357,6 @@ export default {
     components: {
         SemVueProgress,
     },
-    data() {
-        return {
-            progress: this.$refs.progress,
-        };
-    },
     methods: {
         increment() {
             this.$refs.progress.increment();
