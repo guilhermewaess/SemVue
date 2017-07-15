@@ -41,6 +41,7 @@ export default {
  - Dropdown
  - Modal
  - Popup
+ - Progress
  - Rating
 
 ## To do and improvements
@@ -61,7 +62,7 @@ export default {
  - [x] Popup
    - [x] Basic Implementation
    - [x] Initialization options override 
- - [ ] Progress
+ - [x] Progress
  - [x] Rating
    - [x] Basic Implementation
    - [x] Initialization options override 

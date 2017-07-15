@@ -1,4 +1,4 @@
-![](https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png)
+<p align="center"><a href="https://guilhermewaess.github.io/SemVue" target="_blank"><img width="400"src="https://guilhermewaess.github.io/SemVue/static/img/logo.412b713.png"></a></p>
 
 ----------
 
@@ -33,6 +33,7 @@ export default {
  - Dropdown
  - Modal
  - Popup
+ - Progress
  - Rating
 
 ## To do and improvements
@@ -53,7 +54,7 @@ export default {
  - [x] Popup
    - [x] Basic Implementation
    - [x] Initialization options override 
- - [ ] Progress
+ - [x] Progress
  - [x] Rating
    - [x] Basic Implementation
    - [x] Initialization options override 
