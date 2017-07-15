@@ -3,7 +3,7 @@ import RatingDoc from '@/components/RatingDoc';
 
 let ratingDoc;
 
-describe('DropdownDoc', () => {
+describe('RatingDoc', () => {
     beforeEach((done) => {
         ratingDoc = new Vue(RatingDoc);
         done();
