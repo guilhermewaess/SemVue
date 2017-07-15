@@ -4,40 +4,7 @@
         <p>Accordion component,
             <a href="https://semantic-ui.com/modules/accordion.html">you can see all documentation here</a>
         </p>
-    
-        <div class="ui segment">
-            <pre>
-                import { Accordion } from 'semvue';
 
-                export default {
-                    components: {
-                        Accordion,
-                    },
-                }
-            </pre>
-        </div>
-    
-        <div class="ui segment">
-            <pre>
-                &ltaccordion&gt
-                    &ltdiv class="title"&gt
-                        &lti class="dropdown icon"&gt&lt/i&gt
-                        Item 1
-                    &lt/div&gt
-                    &ltdiv class="content"&gt
-                        &ltp&gtHello, I'm the first item.&lt/p&gt
-                    &lt/div&gt
-                    &ltdiv class="title"&gt
-                        &lti class="dropdown icon"&gt&lt/i&gt
-                        Item 2
-                    &lt/div&gt
-                    &ltdiv class="content"&gt
-                        &ltp&gtHello, I'm the second item.&lt/p&gt
-                    &lt/div&gt
-                &lt/accordion&gt
-            </pre>
-        </div>
-    
         <h3 class="ui dividing header">Example</h3>
         <accordion accordionId="accordion-example" customClass="styled">
             <div class="title">
@@ -55,6 +22,40 @@
                 <p>Hello, I'm the second item.</p>
             </div>
         </accordion>
+
+        <h3 class="ui dividing header">Usage</h3>
+        <div class="ui segment">
+            <pre>
+            import { Accordion } from 'semvue';
+
+            export default {
+                components: {
+                    Accordion,
+                },
+            }
+            </pre>
+        </div>
+    
+        <div class="ui segment">
+            <pre>
+            &ltaccordion&gt
+                &ltdiv class="title"&gt
+                    &lti class="dropdown icon"&gt&lt/i&gt
+                    Item 1
+                &lt/div&gt
+                &ltdiv class="content"&gt
+                    &ltp&gtHello, I'm the first item.&lt/p&gt
+                &lt/div&gt
+                &ltdiv class="title"&gt
+                    &lti class="dropdown icon"&gt&lt/i&gt
+                    Item 2
+                &lt/div&gt
+                &ltdiv class="content"&gt
+                    &ltp&gtHello, I'm the second item.&lt/p&gt
+                &lt/div&gt
+            &lt/accordion&gt
+            </pre>
+        </div>
     
         <h3 class="ui dividing header">Props</h3>
         <table class="ui definition table">
