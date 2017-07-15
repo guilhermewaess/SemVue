@@ -98,4 +98,15 @@ describe('ProgressDoc', () => {
             expect(progressDoc.$refs.bottomSegmentProgress.setActive).to.have.been.callCount(1);
         });
     });
+    describe('when requested to setTotal', () => {
+        it('should setTotal to 10 when actual is 100', () => {
+            progressDoc.setTotal();
+            expect(progressDoc.total).to.equal(10);
+        });
+        it('should setTotal to 100 when actual is 10', () => {
+            progressDoc.total = 10;
+            progressDoc.setTotal();
+            expect(progressDoc.total).to.equal(100);
+        });
+    });
 });

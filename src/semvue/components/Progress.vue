@@ -1,5 +1,6 @@
 <template>
-    <div :id="progressId" :class="`ui ${customClass} progress`">
+    <div :id="progressId"
+         :class="`ui ${customClass} progress`">
         <div class="bar">
             <div class="progress"></div>
         </div>
@@ -163,6 +164,13 @@ export default {
         },
         removeError() {
             this.progressElement.progress('remove error');
+        },
+    },
+    watch: {
+        total(newTotal) {
+            this.setTotal(newTotal);
+            this.reset();
+            this.setActive();
         },
     },
 };

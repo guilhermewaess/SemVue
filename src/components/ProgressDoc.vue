@@ -7,7 +7,7 @@
         </p>
         <sem-vue-progress ref="progress"
                           progressId="progressId"
-                          :total="100"
+                          :total="total"
                           activeText="Clicked {value} of {total} clicks"
                           successText="You finished to click {total} times"
                           warningText="Watch out, are you really clicking?"
@@ -21,7 +21,7 @@
             <sem-vue-progress ref="topSegmentProgress"
                               progressId="top-segment-progress"
                               customClass="top attached"
-                              :total="100"
+                              :total="total"
                               activeText="Clicked {value} of {total} clicks"
                               successText="You finished to click {total} times"
                               warningText="Watch out, are you really clicking?"
@@ -31,7 +31,7 @@
             <sem-vue-progress ref="bottomSegmentProgress"
                               progressId="bottom-segment-progress"
                               customClass="bottom attached"
-                              :total="100"
+                              :total="total"
                               activeText="Clicked {value} of {total} clicks"
                               successText="You finished to click {total} times"
                               warningText="Watch out, are you really clicking?"
@@ -69,51 +69,55 @@
     
                 <button class="ui yellow button"
                         @click="setState('setWarning')">SetWarning</button>
+    
             </div>
+            <button class="ui button"
+                    @click="setTotal">Set Total</button>
         </div>
     
         <h3 class="ui dividing header">Usage</h3>
         *&ltprogress&gt is a reserved html tag, so don't forget to use sem-vue-progress tag*
         <div class="ui segment code">
             <pre>
-            import { SemVueProgress } from '@/semvue'; 
-
-            export default {
-                components: {
-                    SemVueProgress,
-                },
-                methods: {
-                    increment() {
-                        this.$refs.progressRef.increment();
-                    },
-                }
-            }
-            </pre>
+                            import { SemVueProgress } from '@/semvue'; 
+                
+                            export default {
+                                components: {
+                                    SemVueProgress,
+                                },
+                                methods: {
+                                    increment() {
+                                        this.$refs.progressRef.increment();
+                                    },
+                                }
+                            }
+                            </pre>
         </div>
         Note that you need to ref the component and use API*
         <div class="ui segment code">
             <pre>
-            &ltsem-vue-progress ref="progressRef"
-                                progressId="progressRef"
-                                :total="100"
-                                activeText="Clicked {value} of {total} clicks"
-                                successText="You finished to click {total} times"
-                                warningText="Watch out, are you really clicking?"
-                                errorText="Ops, something went wrong during clicking time"&gt
-            &lt/sem-vue-progress&gt
-            </pre>
+                            &ltsem-vue-progress ref="progressRef"
+                                                progressId="progressRef"
+                                                :total="100"
+                                                activeText="Clicked {value} of {total} clicks"
+                                                successText="You finished to click {total} times"
+                                                warningText="Watch out, are you really clicking?"
+                                                errorText="Ops, something went wrong during clicking time"&gt
+                            &lt/sem-vue-progress&gt
+                            </pre>
         </div>
     
-        If you want to change the start label under the bar, you can use <strong>slot: start-label</strong>.
+        If you want to change the start label under the bar, you can use
+        <strong>slot: start-label</strong>.
         <div class="ui segment code">
             <pre>
-            &ltsem-vue-progress ref="progressRef"
-                                progressId="progressRef"
-                                :total="100"&gt
-
-                &ltdiv class="label" slot="start-label"&gtPlease, click on increment button&lt/div&gt
-            &lt/sem-vue-progress&gt
-            </pre>
+                            &ltsem-vue-progress ref="progressRef"
+                                                progressId="progressRef"
+                                                :total="100"&gt
+                
+                                &ltdiv class="label" slot="start-label"&gtPlease, click on increment button&lt/div&gt
+                            &lt/sem-vue-progress&gt
+                            </pre>
         </div>
     
         <h3 class="ui dividing header">Props</h3>
@@ -357,6 +361,11 @@ export default {
     components: {
         SemVueProgress,
     },
+    data() {
+        return {
+            total: 100,
+        };
+    },
     methods: {
         increment() {
             this.$refs.progress.increment();
@@ -382,6 +391,13 @@ export default {
             this.$refs.progress[state]();
             this.$refs.topSegmentProgress[state]();
             this.$refs.bottomSegmentProgress[state]();
+        },
+        setTotal() {
+            if (this.total === 100) {
+                this.total = 10;
+            } else {
+                this.total = 100;
+            }
         },
     },
 };
