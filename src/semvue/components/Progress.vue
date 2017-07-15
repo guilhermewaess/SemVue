@@ -25,7 +25,7 @@ function createOptions() {
 }
 
 export default {
-    name: 'Rating',
+    name: 'Progress',
     props: {
         progressId: {
             validator: prop => prop.length,
@@ -37,6 +37,7 @@ export default {
         },
         incrementValue: {
             type: Number,
+            default: null,
         },
         progressLabelType: {
             type: String,

@@ -15,7 +15,7 @@ const helper = {
     },
 };
 
-describe.only('ProgressDoc', () => {
+describe('ProgressDoc', () => {
     beforeEach((done) => {
         progressDoc = new Vue(ProgressDoc);
         progressDoc.$refs.progress = helper.createProgressMock();
