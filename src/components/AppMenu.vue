@@ -16,6 +16,10 @@
             Dropdown
         </router-link>
 
+        <router-link class="item" :to="{ name: 'EmbedDoc' }">
+            Embed
+        </router-link>
+
         <router-link class="item" :to="{ name: 'ModalDoc' }">
             Modal
         </router-link>
