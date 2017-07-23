@@ -112,11 +112,6 @@ export default {
   components: {
     SemVueEmbed,
   },
-  data() {
-    return {};
-  },
-  methods: {
-  },
 };
 </script>
 
