@@ -5,6 +5,7 @@ import Welcome from '@/components/Welcome';
 import AccordionDoc from '@/components/AccordionDoc';
 import DimmerDoc from '@/components/DimmerDoc';
 import DropdownDoc from '@/components/DropdownDoc';
+import EmbedDoc from '@/components/EmbedDoc';
 import ModalDoc from '@/components/ModalDoc';
 import PopupDoc from '@/components/PopupDoc';
 import ProgressDoc from '@/components/ProgressDoc';
@@ -46,6 +47,11 @@ export default new Router({
       path: '/DropDownDoc',
       name: 'DropDownDoc',
       component: DropdownDoc,
+    },
+    {
+      path: '/EmbedDoc',
+      name: 'EmbedDoc',
+      component: EmbedDoc,
     },
     {
       path: '/ModalDoc',
