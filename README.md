@@ -54,7 +54,7 @@ export default {
   - [x] Initialization options override 
 - [x] Dropdown
   - [x] Basic Implementation
-- [ ] Embed
+- [x] Embed
 - [x] Modal
   - [x] Basic Implementation
   - [x] Initialization options override 
