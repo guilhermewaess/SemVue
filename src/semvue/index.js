@@ -4,6 +4,7 @@ import Dropdown from '@/semvue/components/Dropdown';
 import SemVueEmbed from '@/semvue/components/Embed';
 import Modal from '@/semvue/components/Modal';
 import Popup from '@/semvue/components/Popup';
+import Search from '@/semvue/components/Search';
 import SemVueProgress from '@/semvue/components/Progress';
 import Rating from '@/semvue/components/Rating';
 
@@ -16,4 +17,5 @@ export {
     Popup,
     SemVueProgress,
     Rating,
+    Search,
 };

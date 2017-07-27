@@ -10,6 +10,7 @@ import ModalDoc from '@/components/ModalDoc';
 import PopupDoc from '@/components/PopupDoc';
 import ProgressDoc from '@/components/ProgressDoc';
 import RatingDoc from '@/components/RatingDoc';
+import SearchDoc from '@/components/SearchDoc';
 
 Vue.use(Router);
 
@@ -72,6 +73,11 @@ export default new Router({
       path: '/RatingDoc',
       name: 'RatingDoc',
       component: RatingDoc,
+    },
+    {
+      path: '/SearchDoc',
+      name: 'SearchDoc',
+      component: SearchDoc,
     },
   ],
 });

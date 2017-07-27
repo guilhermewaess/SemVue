@@ -35,6 +35,10 @@
         <router-link class="item" :to="{ name: 'RatingDoc' }">
             Rating
         </router-link>
+
+        <router-link class="item" :to="{ name: 'SearchDoc' }">
+            Progress
+        </router-link>
     </div>
 </template>
 
