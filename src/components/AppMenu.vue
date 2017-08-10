@@ -37,7 +37,7 @@
         </router-link>
 
         <router-link class="item" :to="{ name: 'SearchDoc' }">
-            Progress
+            Search
         </router-link>
     </div>
 </template>
