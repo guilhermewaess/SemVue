@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "vue": "^2.3.3"
+    "vue": "^2.5.13"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
