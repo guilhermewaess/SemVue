@@ -8,7 +8,7 @@ const ModalConstructor = Vue.extend(Modal);
 describe('Modal', () => {
     beforeEach((done) => {
         $().reset();
-        validProps = { modalId: 'modalId', showModal: false };
+        validProps = { id: 'id', showModal: false };
         modal = new ModalConstructor({ propsData: validProps }).$mount();
         done();
     });
@@ -21,14 +21,14 @@ describe('Modal', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have modalId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = { showModal: false };
             new ModalConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "modalId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have showModal prop', (done) => {
-            const invalidProps = { modalId: 'modalId' };
+            const invalidProps = { id: 'id' };
             new ModalConstructor({ propsData: invalidProps }).$mount();
             expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "showModal"'); // eslint-disable-line
             done();
@@ -70,9 +70,9 @@ describe('Modal', () => {
             modal.toggleModal();
             done();
         });
-        it('should call jquery selector with modalId', (done) => {
+        it('should call jquery selector with id', (done) => {
             modal.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.modalId}`);
+                expect($).to.have.been.calledWith(`#${validProps.id}`);
                 done();
             });
         });

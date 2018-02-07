@@ -9,7 +9,7 @@
     <div class="ui large label">
       Rating the stars:
       <div class="detail">
-        <rating ratingId="ratingDoc" :type="type" customClass="big" :currentRating.sync="currentRating" :maxRating="5"></rating>
+        <rating id="ratingDoc" :type="type" customClass="big" :currentRating.sync="currentRating" :maxRating="5"></rating>
       </div>
     </div>
   
@@ -44,7 +44,7 @@
     </div>
     <div class="ui segment code">
       <pre>
-        &ltrating ratingId="ratingDoc" :type="type" customClass="big" :currentRating.sync="currentRating" :maxRating="5"&gt&lt/rating&gt
+        &ltrating id="ratingDoc" :type="type" customClass="big" :currentRating.sync="currentRating" :maxRating="5"&gt&lt/rating&gt
       </pre>
     </div>
   
@@ -61,7 +61,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>ratingId</td>
+          <td>id</td>
           <td>String</td>
           <td>Yes</td>
           <td>-</td>
@@ -151,6 +151,6 @@ export default {
 
 <style lang="less" scoped>
 .code {
-  padding: 0!important;
+  padding: 0 !important;
 }
 </style>

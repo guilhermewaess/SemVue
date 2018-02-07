@@ -1,5 +1,5 @@
 <template>
-    <div :id="embedId"
+    <div :id="id"
          :data-url="dataUrl"
          :data-placeholder="dataPlaceholder"
          :class="`ui ${customClass} embed`">
@@ -7,58 +7,47 @@
 </template>
 
 <script>
+import componentsMixins from './../mixins/Components';
 
 function createDefaultOptions() {
-    return {
-        autoplay: this.autoplay,
-    };
+  return {
+    autoplay: this.autoplay,
+  };
 }
 
 export default {
-    name: 'Embed',
-    props: {
-        embedId: {
-            validator: prop => prop.length,
-            required: true,
-        },
-        dataUrl: {
-            validator: prop => prop.length,
-            required: true,
-        },
-        dataPlaceholder: {
-            type: String,
-            default: '',
-        },
-        autoplay: {
-            type: Boolean,
-            dafault: false,
-        },
-        customClass: {
-            type: String,
-            default: '',
-        },
-        options: {
-            type: Object,
-            default() { return {}; },
-        },
+  name: 'Embed',
+  mixins: [componentsMixins],
+  props: {
+    dataUrl: {
+      validator: prop => prop.length,
+      required: true,
     },
-    mounted() {
-        this.startEmbed();
+    dataPlaceholder: {
+      type: String,
+      default: '',
     },
-    methods: {
-        startEmbed() {
-            const defaultOptions = createDefaultOptions.call(this);
-            const options = Object.assign(defaultOptions, this.options);
-            const embedElement = $(`#${this.embedId}`);
+    autoplay: {
+      type: Boolean,
+      dafault: false,
+    },
+  },
+  mounted() {
+    this.startEmbed();
+  },
+  methods: {
+    startEmbed() {
+      const defaultOptions = createDefaultOptions.call(this);
+      const options = Object.assign(defaultOptions, this.options);
+      const embedElement = $(`#${this.id}`);
 
-            embedElement.embed(options);
-        },
+      embedElement.embed(options);
     },
-    watch: {
-        dataUrl() {
-            this.startEmbed();
-        },
+  },
+  watch: {
+    dataUrl() {
+      this.startEmbed();
     },
+  },
 };
-
 </script>

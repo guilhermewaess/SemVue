@@ -1,69 +1,61 @@
 <template>
-    <div :id="popupId" :class="`ui ${customClass} special popup`">
+    <div :id="id" :class="`ui ${customClass} special popup`">
         <slot></slot>
     </div>
 </template>
 
 
 <script>
+import componentsMixins from './../mixins/Components';
 
 function createDefaultOptions() {
-    return {
-        on: this.trigger,
-        target: this.targetSelector,
-        popup: `#${this.popupId}`,
-        inline: false,
-    };
+  return {
+    on: this.trigger,
+    target: this.targetSelector,
+    popup: `#${this.id}`,
+    inline: false,
+  };
 }
 
 export default {
-    name: 'Popup',
-    props: {
-        popupId: {
-            validator: prop => prop.length,
-            required: true,
-        },
-        trigger: {
-            type: String,
-            required: true,
-        },
-        targetSelector: {
-            type: String,
-            required: true,
-        },
-        customClass: {
-            type: String,
-            default: '',
-        },
-        options: {
-            type: Object,
-            default() { return {}; },
-        },
+  name: 'Popup',
+  mixins: [componentsMixins],
+  props: {
+    trigger: {
+      type: String,
+      required: true,
     },
-    mounted() {
-        this.startPopup();
+    targetSelector: {
+      type: String,
+      required: true,
     },
-    methods: {
-        startPopup() {
-            const defaultOptions = createDefaultOptions.call(this);
-            const options = Object.assign(defaultOptions, this.options);
-            const popupElement = $(`${this.targetSelector}`);
+  },
+  mounted() {
+    this.startPopup();
+  },
+  methods: {
+    startPopup() {
+      const defaultOptions = createDefaultOptions.call(this);
+      const options = Object.assign(defaultOptions, this.options);
+      const popupElement = $(`${this.targetSelector}`);
 
-            popupElement.popup(options);
-        },
+      popupElement.popup(options);
     },
-    watch: {
-        trigger() {
-            this.startPopup();
-        },
-        targetSelector() {
-            this.startPopup();
-        },
-        options: {
-            handler() { this.startPopup(); },
-            deep: true,
-        },
+  },
+  watch: {
+    trigger() {
+      this.startPopup();
     },
+    targetSelector() {
+      this.startPopup();
+    },
+    options: {
+      handler() {
+        this.startPopup();
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 

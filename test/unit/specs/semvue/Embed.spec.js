@@ -15,7 +15,7 @@ const helper = {
 describe('Progress', () => {
     beforeEach((done) => {
         $().reset();
-        validProps = { embedId: 'embedId', dataUrl: 'url' };
+        validProps = { id: 'id', dataUrl: 'url' };
         helper.createProgress();
         done();
     });
@@ -28,14 +28,14 @@ describe('Progress', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have embedId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = { dataUrl: 'url' };
             new EmbedConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "embedId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have dataUrl prop', (done) => {
-            const invalidProps = { embedId: 'embedId' };
+            const invalidProps = { id: 'id' };
             new EmbedConstructor({ propsData: invalidProps }).$mount();
             expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "dataUrl"'); // eslint-disable-line
             done();
@@ -90,9 +90,9 @@ describe('Progress', () => {
                 done();
             });
         });
-        it('should call jquery selector with embedId', (done) => {
+        it('should call jquery selector with id', (done) => {
             embed.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.embedId}`);
+                expect($).to.have.been.calledWith(`#${validProps.id}`);
                 done();
             });
         });

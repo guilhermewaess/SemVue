@@ -9,7 +9,7 @@ describe('Popup', () => {
     beforeEach((done) => {
         $().reset();
         validProps = {
-            popupId: 'popupId',
+            id: 'id',
             trigger: 'top left',
             targetSelector: '.my-icon',
         };
@@ -25,18 +25,18 @@ describe('Popup', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have popupId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = {
                 trigger: 'top left',
                 targetSelector: '.my-icon',
             };
             new PopupConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "popupId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have trigger prop', (done) => {
             const invalidProps = {
-                popupId: 'popupId',
+                id: 'id',
                 targetSelector: '.my-icon',
             };
             new PopupConstructor({ propsData: invalidProps }).$mount();
@@ -45,7 +45,7 @@ describe('Popup', () => {
         });
         it('should throw exception when doesnt have targetSelector prop', (done) => {
             const invalidProps = {
-                popupId: 'popupId',
+                id: 'id',
                 trigger: 'top left',
             };
             new PopupConstructor({ propsData: invalidProps }).$mount();
@@ -103,9 +103,9 @@ describe('Popup', () => {
             expect(configurationCall.target).to.equal(validProps.targetSelector);
             done();
         });
-        it('should configure popup with popupId', (done) => {
+        it('should configure popup with id', (done) => {
             const configurationCall = $().popup.args[0][0];
-            expect(configurationCall.popup).to.equal(`#${validProps.popupId}`);
+            expect(configurationCall.popup).to.equal(`#${validProps.id}`);
             done();
         });
         it('should configure inline with false', (done) => {

@@ -14,7 +14,7 @@
                 <div class="ui center aligned segment basic-dimmer">
                     Basic Dimmer
     
-                    <dimmer dimmerId="basic-dimmer" targetSelector=".basic-dimmer" :showDimmer.sync="showBasicDimmer"></dimmer>
+                    <dimmer id="basic-dimmer" targetSelector=".basic-dimmer" :showDimmer.sync="showBasicDimmer"></dimmer>
                 </div>
             </div>
     
@@ -23,7 +23,7 @@
                 <div class="ui center aligned segment content-dimmer">
                     Content Dimmer
     
-                    <dimmer dimmerId="content-dimmer" targetSelector=".content-dimmer" :showDimmer.sync="showContentDimmer">
+                    <dimmer id="content-dimmer" targetSelector=".content-dimmer" :showDimmer.sync="showContentDimmer">
                         <div class="content">
                             <div class="center">
                                 <h2 class="ui inverted icon header">
@@ -41,7 +41,7 @@
                 <div class="ui center aligned segment loading-dimmer">
                     Loading Dimmer
     
-                    <dimmer dimmerId="loading-dimmer" targetSelector=".loading-dimmer" :showDimmer.sync="showLoadingDimmer">
+                    <dimmer id="loading-dimmer" targetSelector=".loading-dimmer" :showDimmer.sync="showLoadingDimmer">
                         <div class="ui text loader">Loading</div>
                     </dimmer>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="ui center aligned segment hover-dimmer">
                     Hover Dimmer
     
-                    <dimmer dimmerId="hover-dimmer" targetSelector=".hover-dimmer" :showDimmer.sync="showHoverDimmer" :options="hoverDimmerOptions">
+                    <dimmer id="hover-dimmer" targetSelector=".hover-dimmer" :showDimmer.sync="showHoverDimmer" :options="hoverDimmerOptions">
                         <div class="content">
                             <div class="center">
                                 <h2 class="ui inverted icon header">
@@ -66,7 +66,7 @@
     
             <div class="three wide center aligned column centered">
                 <button class="ui button all-paragraphs-button" @click="changeDimmerVisibility('showAllParagraphsDimmer')">Dimmer all paragraphs</button>
-                <dimmer targetSelector="p" dimmerId="all-paragraphs-dimmer" :showDimmer.sync="showAllParagraphsDimmer"></dimmer>
+                <dimmer targetSelector="p" id="all-paragraphs-dimmer" :showDimmer.sync="showAllParagraphsDimmer"></dimmer>
             </div>
         </div>
     
@@ -91,7 +91,7 @@
             &ltdiv class="ui center aligned segment content-dimmer"&gt
                 Content Dimmer
 
-                &ltdimmer dimmerId="content-dimmer" targetSelector=".content-dimmer" :showDimmer.sync="showContentDimmer"&gt
+                &ltdimmer id="content-dimmer" targetSelector=".content-dimmer" :showDimmer.sync="showContentDimmer"&gt
                     &ltdiv class="content"&gt
                         &ltdiv class="center"&gt
                             &lth2 class="ui inverted icon header"&gt
@@ -118,7 +118,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>dimmerId</td>
+                    <td>id</td>
                     <td>String</td>
                     <td>Yes</td>
                     <td>-</td>
@@ -165,38 +165,38 @@
 import { Dimmer } from '@/semvue';
 
 export default {
-    name: 'DimmerDoc',
-    components: {
-        Dimmer,
+  name: 'DimmerDoc',
+  components: {
+    Dimmer,
+  },
+  data() {
+    return {
+      showBasicDimmer: false,
+      showLoadingDimmer: false,
+      showContentDimmer: false,
+      showAllParagraphsDimmer: false,
+      showHoverDimmer: false,
+      hoverDimmerOptions: { on: 'hover' },
+    };
+  },
+  methods: {
+    changeDimmerVisibility(dimmer) {
+      this[dimmer] = true;
     },
-    data() {
-        return {
-            showBasicDimmer: false,
-            showLoadingDimmer: false,
-            showContentDimmer: false,
-            showAllParagraphsDimmer: false,
-            showHoverDimmer: false,
-            hoverDimmerOptions: { on: 'hover' },
-        };
-    },
-    methods: {
-        changeDimmerVisibility(dimmer) {
-            this[dimmer] = true;
-        },
-    },
+  },
 };
 </script>
 
 <style lang="less" scoped>
 .column.centered {
-    min-height: 15em!important;
+  min-height: 15em !important;
 }
 
 .ui.center.aligned.segment {
-    height: 78%;
+  height: 78%;
 }
 
 .all-paragraphs-button {
-    margin-top: 50%;
+  margin-top: 50%;
 }
 </style>

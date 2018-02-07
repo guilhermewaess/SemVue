@@ -1,35 +1,24 @@
 <template>
-    <div :id="accordionId" :class="`ui ${customClass} accordion`">
+    <div :id="id" :class="`ui ${customClass} accordion`">
         <slot></slot>
     </div>
 </template>
 
 <script>
+import componentsMixins from './../mixins/Components';
+
 export default {
-    name: 'Accordion',
-    props: {
-        accordionId: {
-            validator: prop => prop.length,
-            required: true,
-        },
-        customClass: {
-            type: String,
-            default: '',
-        },
-        options: {
-            type: Object,
-            default() { return {}; },
-        },
+  name: 'Accordion',
+  mixins: [componentsMixins],
+  mounted() {
+    this.startAccordion();
+  },
+  methods: {
+    startAccordion() {
+      const accordionElement = $(`#${this.id}`);
+      accordionElement.accordion(this.options);
     },
-    mounted() {
-        this.startAccordion();
-    },
-    methods: {
-        startAccordion() {
-            const accordionElement = $(`#${this.accordionId}`);
-            accordionElement.accordion(this.options);
-        },
-    },
+  },
 };
 </script>
 

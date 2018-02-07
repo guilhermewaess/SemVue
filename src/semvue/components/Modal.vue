@@ -1,5 +1,5 @@
 <template>
-    <div :id="modalId" :class="`ui ${type} modal`">
+    <div :id="id" :class="`ui ${type} modal`">
         <div class="header">
             <slot name="header">
                 Modal Title
@@ -21,69 +21,62 @@
 </template>
 
 <script>
+import componentsMixins from './../mixins/Components';
+
 function createModalOptions() {
-    const defaultOptions = {
-        closable: this.closable,
-        onHidden: this.onHidden,
-    };
-    const options = Object.assign(defaultOptions, this.options);
+  const defaultOptions = {
+    closable: this.closable,
+    onHidden: this.onHidden,
+  };
+  const options = Object.assign(defaultOptions, this.options);
 
-    if (this.options.onHidden) {
-        options.onHidden = this.onHidden.bind(this, this.options.onHidden);
-    }
+  if (this.options.onHidden) {
+    options.onHidden = this.onHidden.bind(this, this.options.onHidden);
+  }
 
-    return options;
+  return options;
 }
 
-
 export default {
-    name: 'Modal',
-    props: {
-        modalId: {
-            validator: prop => prop.length,
-            required: true,
-        },
-        showModal: {
-            type: Boolean,
-            required: true,
-        },
-        closable: {
-            type: Boolean,
-            default: true,
-        },
-        type: {
-            type: String,
-            default: '',
-        },
-        options: {
-            type: Object,
-            default() { return {}; },
-        },
+  name: 'Modal',
+  mixins: [componentsMixins],
+  props: {
+    showModal: {
+      type: Boolean,
+      required: true,
     },
-    methods: {
-        onHidden(customCallback) {
-            if (customCallback) {
-                customCallback();
-            }
-            this.$emit('update:showModal', false);
-        },
-        toggleModal() {
-            const toggleDecision = this.showModal ? 'show' : 'hide';
-            const modalElement = $(`#${this.modalId}`);
-            const options = createModalOptions.call(this);
+    closable: {
+      type: Boolean,
+      default: true,
+    },
+    type: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    onHidden(customCallback) {
+      if (customCallback) {
+        customCallback();
+      }
+      this.$emit('update:showModal', false);
+    },
+    toggleModal() {
+      const toggleDecision = this.showModal ? 'show' : 'hide';
+      const modalElement = $(`#${this.id}`);
+      const options = createModalOptions.call(this);
 
-            if (this.showModal) {
-                modalElement.modal(options);
-            }
+      if (this.showModal) {
+        modalElement.modal(options);
+      }
 
-            modalElement.modal(toggleDecision);
-        },
+      modalElement.modal(toggleDecision);
     },
-    watch: {
-        showModal() {
-            this.toggleModal();
-        },
+  },
+  watch: {
+    showModal() {
+      this.toggleModal();
     },
+  },
 };
-
 </script>
