@@ -15,7 +15,7 @@ const helper = {
 describe('Progress', () => {
     beforeEach((done) => {
         $().reset();
-        validProps = { progressId: 'progressId', total: 100 };
+        validProps = { id: 'id', total: 100 };
         helper.createProgress();
         done();
     });
@@ -28,14 +28,14 @@ describe('Progress', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have progressId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = { total: 100 };
             new ProgressConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "progressId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have currentRating prop', (done) => {
-            const invalidProps = { progressId: 'progressId' };
+            const invalidProps = { id: 'id' };
             new ProgressConstructor({ propsData: invalidProps }).$mount();
             expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "total"'); // eslint-disable-line
             done();
@@ -99,7 +99,7 @@ describe('Progress', () => {
         });
         it('should call jquery selector with ratingId', (done) => {
             progress.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.progressId}`);
+                expect($).to.have.been.calledWith(`#${validProps.id}`);
                 done();
             });
         });

@@ -31,7 +31,7 @@
   
     <div class="ui segment">
       <pre>
-        &ltmodal modalId="modal1" type="basic" :showModal.sync="showBasicModal"&gt
+        &ltmodal id="modal1" type="basic" :showModal.sync="showBasicModal"&gt
           &ltdiv slot="header"&gtHello, i'm header&lt/div&gt
           &ltdiv slot="content"&gtHello, i'm content&lt/div&gt
           &ltdiv slot="footer"&gtHello, i'm footer&lt/div&gt
@@ -52,7 +52,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>modalId</td>
+          <td>id</td>
           <td>String</td>
           <td>Yes</td>
           <td>-</td>
@@ -91,13 +91,13 @@
       </tbody>
     </table>
   
-    <modal modalId="basic-modal" type="basic" :showModal.sync="showBasicModal">
+    <modal id="basic-modal" type="basic" :showModal.sync="showBasicModal">
       <div slot="header">Hello, i'm header</div>
       <div slot="content">Hello, i'm content</div>
       <div slot="footer">Hello, i'm footer</div>
     </modal>
   
-    <modal modalId="long-modal" :showModal.sync="showLongModal">
+    <modal id="long-modal" :showModal.sync="showLongModal">
       <div slot="header">Hello, i'm header</div>
       <div slot="content">Hello, i'm content</div>
       <div slot="footer">Hello, i'm footer</div>
@@ -130,11 +130,11 @@ export default {
 
 <style lang="less" scoped>
 .segment {
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 pre {
-  margin: 0!important;
+  margin: 0 !important;
 }
 </style>
 

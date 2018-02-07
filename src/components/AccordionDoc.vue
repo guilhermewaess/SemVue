@@ -6,7 +6,7 @@
         </p>
 
         <h3 class="ui dividing header">Example</h3>
-        <accordion accordionId="accordion-example" customClass="styled">
+        <accordion id="accordion-example" customClass="styled">
             <div class="title">
                 <i class="dropdown icon"></i>
                 Item 1
@@ -70,7 +70,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>accordionId</td>
+                    <td>id</td>
                     <td>String</td>
                     <td>Yes</td>
                     <td>-</td>

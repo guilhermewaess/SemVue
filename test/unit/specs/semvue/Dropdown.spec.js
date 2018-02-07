@@ -9,7 +9,7 @@ describe('Dropdown', () => {
     beforeEach((done) => {
         $().reset();
         validProps = {
-            dropdownId: 'dropdownId',
+            id: 'id',
             value: { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' },
             options: [
                 { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' },
@@ -28,7 +28,7 @@ describe('Dropdown', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have dropdownId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = {
                 value: { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' },
                 options: [{ iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' }],
@@ -36,12 +36,12 @@ describe('Dropdown', () => {
                 customClass: 'large',
             };
             new DropdownConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "dropdownId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have value prop', (done) => {
             const invalidProps = {
-                dropdownId: 'dropdownId',
+                id: 'id',
                 options: [{ iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' }],
                 iconProperty: 'iconClass',
                 customClass: 'large',
@@ -52,7 +52,7 @@ describe('Dropdown', () => {
         });
         it('should throw exception when doesnt have options prop', (done) => {
             const invalidProps = {
-                dropdownId: 'dropdownId',
+                id: 'id',
                 value: { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' },
                 iconProperty: 'iconClass',
                 customClass: 'large',
@@ -63,7 +63,7 @@ describe('Dropdown', () => {
         });
         it('should not throw exception when doesnt have optional props', (done) => {
             const invalidProps = {
-                dropdownId: 'dropdownId',
+                id: 'id',
                 value: { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' },
                 options: [{ iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' }],
             };
@@ -106,9 +106,9 @@ describe('Dropdown', () => {
             dropdown.startDropdown();
             done();
         });
-        it('should call jquery selector with dropdownId', (done) => {
+        it('should call jquery selector with id', (done) => {
             dropdown.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.dropdownId}`);
+                expect($).to.have.been.calledWith(`#${validProps.id}`);
                 done();
             });
         });

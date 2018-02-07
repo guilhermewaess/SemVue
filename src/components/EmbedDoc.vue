@@ -9,12 +9,12 @@
     <div class="ui equal width center aligned grid">
       <div class="column">
         Youtube example
-        <SemVueEmbed embedId="youtube-embed"
+        <SemVueEmbed id="youtube-embed"
                      dataUrl="https://www.youtube.com/embed/lG0Ys-2d4MA"></SemVueEmbed>
       </div>
       <div class="column">
         Facebook example
-        <SemVueEmbed embedId="facebook-embed"
+        <SemVueEmbed id="facebook-embed"
                      dataUrl="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FBotangle%2Fvideos%2F981470695232233%2F"></SemVueEmbed>
       </div>
     </div>
@@ -35,7 +35,7 @@
 
         <div class="ui segment code">
             <pre>
-            &ltSemVueEmbed embedId="youtube-embed" dataUrl="https://www.youtube.com/embed/lG0Ys-2d4MA"&gt&lt/SemVueEmbed&gt
+            &ltSemVueEmbed id="youtube-embed" dataUrl="https://www.youtube.com/embed/lG0Ys-2d4MA"&gt&lt/SemVueEmbed&gt
             </pre>
         </div>
 
@@ -53,7 +53,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>embedId</td>
+                    <td>id</td>
                     <td>String</td>
                     <td>Yes</td>
                     <td>-</td>
@@ -117,6 +117,6 @@ export default {
 
 <style lang="less" scoped>
 .code {
-  padding: 0!important;
+  padding: 0 !important;
 }
 </style>

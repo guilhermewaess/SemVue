@@ -6,7 +6,7 @@
             <a href="https://semantic-ui.com/modules/dropdown.html"> you can see all documentation here</a>
         </p>
     
-        <dropdown dropdownId="drop-phones" :options="dropdownOptions" :value.sync="selectedValue" customClass="large label" :iconProperty="iconProperty">
+        <dropdown id="drop-phones" :options="dropdownOptions" :value.sync="selectedValue" customClass="large label" :iconProperty="iconProperty">
         </dropdown>
     
         <div class="ui buttons">
@@ -35,7 +35,7 @@
         </div>
         <div class="ui segment dropdown-code">
             <pre>
-                &ltdropdown dropdownId="drop-phones" 
+                &ltdropdown id="drop-phones" 
                     :options="dropdownOptions" 
                     :value.sync="selectedValue" 
                     customClass="large label" 
@@ -57,7 +57,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>dropdownId</td>
+                    <td>id</td>
                     <td>String</td>
                     <td>Yes</td>
                     <td>-</td>
@@ -105,70 +105,86 @@
 import { Dropdown } from '@/semvue';
 
 export default {
-    name: 'DropdownDoc',
-    components: {
-        Dropdown,
-    },
-    created() {
+  name: 'DropdownDoc',
+  components: {
+    Dropdown,
+  },
+  created() {
+    this.dropdownOptions = this.defaultOptions;
+    this.selectedValue = this.dropdownOptions[0];
+  },
+  data() {
+    return {
+      selectedValue: null,
+      iconProperty: 'iconClass',
+      dropdownOptions: [],
+      defaultOptions: [
+        {
+          iconClass: 'volume control phone',
+          value: 1,
+          text: "Hello, I'm normal phone 1",
+        },
+        { iconClass: 'mobile', value: 2, text: "Hello, I'm mobile phone 2" },
+        { iconClass: 'whatsapp', value: 3, text: "Hello, I'm whats phone 3" },
+      ],
+      anotherOptions: [
+        {
+          iconClass: 'volume control phone',
+          value: 1,
+          text: "Hello, I'm THE NEW normal phone 1",
+        },
+        {
+          iconClass: 'mobile',
+          value: 2,
+          text: "Hello, I'm THE NEW mobile phone 2",
+        },
+        {
+          iconClass: 'whatsapp',
+          value: 3,
+          text: "Hello, I'm THE NEW whats phone 3",
+        },
+      ],
+      optionsWithoutText: [
+        { iconClass: 'volume control phone', value: 1 },
+        { iconClass: 'mobile', value: 2 },
+        { iconClass: 'whatsapp', value: 3 },
+      ],
+    };
+  },
+  methods: {
+    changeOptions() {
+      this.restoreIconProperty();
+      if (this.dropdownOptions === this.defaultOptions) {
+        this.dropdownOptions = this.anotherOptions;
+      } else {
         this.dropdownOptions = this.defaultOptions;
-        this.selectedValue = this.dropdownOptions[0];
+      }
     },
-    data() {
-        return {
-            selectedValue: null,
-            iconProperty: 'iconClass',
-            dropdownOptions: [],
-            defaultOptions: [
-                { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m normal phone 1' },
-                { iconClass: 'mobile', value: 2, text: 'Hello, I\'m mobile phone 2' },
-                { iconClass: 'whatsapp', value: 3, text: 'Hello, I\'m whats phone 3' },
-            ],
-            anotherOptions: [
-                { iconClass: 'volume control phone', value: 1, text: 'Hello, I\'m THE NEW normal phone 1' },
-                { iconClass: 'mobile', value: 2, text: 'Hello, I\'m THE NEW mobile phone 2' },
-                { iconClass: 'whatsapp', value: 3, text: 'Hello, I\'m THE NEW whats phone 3' },
-            ],
-            optionsWithoutText: [
-                { iconClass: 'volume control phone', value: 1 },
-                { iconClass: 'mobile', value: 2 },
-                { iconClass: 'whatsapp', value: 3 },
-            ],
-        };
+    changeToOnlyIcons() {
+      this.restoreIconProperty();
+      this.dropdownOptions = this.optionsWithoutText;
     },
-    methods: {
-        changeOptions() {
-            this.restoreIconProperty();
-            if (this.dropdownOptions === this.defaultOptions) {
-                this.dropdownOptions = this.anotherOptions;
-            } else {
-                this.dropdownOptions = this.defaultOptions;
-            }
-        },
-        changeToOnlyIcons() {
-            this.restoreIconProperty();
-            this.dropdownOptions = this.optionsWithoutText;
-        },
-        changeToOnlyText() {
-            this.dropdownOptions = this.defaultOptions;
-            this.iconProperty = '';
-        },
-        changeToIconsAndText() {
-            this.restoreIconProperty();
-            this.dropdownOptions = this.defaultOptions;
-        },
-        restoreIconProperty() {
-            this.iconProperty = 'iconClass';
-        },
+    changeToOnlyText() {
+      this.dropdownOptions = this.defaultOptions;
+      this.iconProperty = '';
     },
+    changeToIconsAndText() {
+      this.restoreIconProperty();
+      this.dropdownOptions = this.defaultOptions;
+    },
+    restoreIconProperty() {
+      this.iconProperty = 'iconClass';
+    },
+  },
 };
 </script>
 
 <style lang="less" scoped>
 pre {
-    margin: 0!important;
+  margin: 0 !important;
 }
 
 .dropdown-code {
-    padding: 0!important;
+  padding: 0 !important;
 }
 </style>

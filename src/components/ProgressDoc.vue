@@ -6,7 +6,7 @@
             <a href="https://semantic-ui.com/modules/progress.html"> you can see all documentation here</a>
         </p>
         <sem-vue-progress ref="progress"
-                          progressId="progressId"
+                          id="id"
                           :total="total"
                           activeText="Clicked {value} of {total} clicks"
                           successText="You finished to click {total} times"
@@ -19,7 +19,7 @@
     
         <div class="ui segment">
             <sem-vue-progress ref="topSegmentProgress"
-                              progressId="top-segment-progress"
+                              id="top-segment-progress"
                               customClass="top attached"
                               :total="total"
                               activeText="Clicked {value} of {total} clicks"
@@ -29,7 +29,7 @@
             </sem-vue-progress>
             Top and Bottom attached progress
             <sem-vue-progress ref="bottomSegmentProgress"
-                              progressId="bottom-segment-progress"
+                              id="bottom-segment-progress"
                               customClass="bottom attached"
                               :total="total"
                               activeText="Clicked {value} of {total} clicks"
@@ -97,7 +97,7 @@
         <div class="ui segment code">
             <pre>
             &ltsem-vue-progress ref="progressRef"
-                                progressId="progressRef"
+                                id="progressRef"
                                 :total="100"
                                 activeText="Clicked {value} of {total} clicks"
                                 successText="You finished to click {total} times"
@@ -112,7 +112,7 @@
         <div class="ui segment code">
             <pre>
             &ltsem-vue-progress ref="progressRef"
-                                progressId="progressRef"
+                                id="progressRef"
                                 :total="100"&gt
 
                 &ltdiv class="label" slot="start-label"&gtPlease, click on increment button&lt/div&gt
@@ -133,7 +133,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>progressId</td>
+                    <td>id</td>
                     <td>String</td>
                     <td>Yes</td>
                     <td>-</td>

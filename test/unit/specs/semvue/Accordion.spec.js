@@ -8,7 +8,7 @@ const AccordionConstructor = Vue.extend(Accordion);
 describe('Accordion', () => {
     beforeEach((done) => {
         $().reset();
-        validProps = { accordionId: 'accordionId' };
+        validProps = { id: 'id' };
         accordion = new AccordionConstructor({ propsData: validProps }).$mount();
         done();
     });
@@ -21,10 +21,10 @@ describe('Accordion', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have accordionId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = {};
             new AccordionConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "accordionId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should have customClass as string empty', (done) => {
@@ -63,7 +63,7 @@ describe('Accordion', () => {
             done();
         });
         it('should call jquery selector with ratingId', (done) => {
-            expect($).to.have.been.calledWith(`#${validProps.accordionId}`);
+            expect($).to.have.been.calledWith(`#${validProps.id}`);
             done();
         });
 

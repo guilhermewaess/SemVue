@@ -14,7 +14,7 @@ const helper = {
 describe('Rating', () => {
     beforeEach((done) => {
         $().reset();
-        validProps = { ratingId: 'ratingId', currentRating: 1, maxRating: 4 };
+        validProps = { id: 'id', currentRating: 1, maxRating: 4 };
         helper.createRating();
         done();
     });
@@ -27,20 +27,20 @@ describe('Rating', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have ratingId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = { currentRating: 1, maxRating: 4 };
             new RatingConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "ratingId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have currentRating prop', (done) => {
-            const invalidProps = { ratingId: 'ratingId', maxRating: 4 };
+            const invalidProps = { id: 'id', maxRating: 4 };
             new RatingConstructor({ propsData: invalidProps }).$mount();
             expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "currentRating"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have maxRating prop', (done) => {
-            const invalidProps = { ratingId: 'ratingId', currentRating: 1 };
+            const invalidProps = { id: 'id', currentRating: 1 };
             new RatingConstructor({ propsData: invalidProps }).$mount();
             expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "maxRating"'); // eslint-disable-line
             done();
@@ -84,9 +84,9 @@ describe('Rating', () => {
             rating.startRating();
             done();
         });
-        it('should call jquery selector with ratingId', (done) => {
+        it('should call jquery selector with id', (done) => {
             rating.$nextTick(() => {
-                expect($).to.have.been.calledWith(`#${validProps.ratingId}`);
+                expect($).to.have.been.calledWith(`#${validProps.id}`);
                 done();
             });
         });

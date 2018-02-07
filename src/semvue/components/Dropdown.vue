@@ -1,5 +1,5 @@
 <template>
-    <div :class="`ui ${customClass} dropdown`" :id="dropdownId">
+    <div :class="`ui ${customClass} dropdown`" :id="id">
         <div class="text">
             <i :class="`${value[iconProperty]} icon`" v-if="hasIcons"></i>
             {{ value.text }}
@@ -17,78 +17,71 @@
 
 <script>
 import _ from 'lodash';
+import componentsMixins from './../mixins/Components';
 
 export default {
-    name: 'dropdown',
-    props: {
-        dropdownId: {
-            validator: prop => prop.length,
-            required: true,
-        },
-        value: {
-            required: true,
-        },
-        options: {
-            type: Array,
-            required: true,
-        },
-        iconProperty: {
-            type: String,
-            default: '',
-        },
-        customClass: {
-            type: String,
-            default: '',
-        },
+  name: 'dropdown',
+  mixins: [componentsMixins],
+  props: {
+    value: {
+      required: true,
     },
-    mounted() {
-        this.startDropdown();
+    options: {
+      type: Array,
+      required: true,
     },
-    methods: {
-        startDropdown() {
-            const dropDownElement = $(`#${this.dropdownId}`);
-            dropDownElement.dropdown({
-                onChange: this.updateValue,
-            });
-        },
-        findSelectedOption(selectedValue) {
-            let option = this.tryFindOptionByString(selectedValue);
+    iconProperty: {
+      type: String,
+      default: '',
+    },
+  },
+  mounted() {
+    this.startDropdown();
+  },
+  methods: {
+    startDropdown() {
+      const dropDownElement = $(`#${this.id}`);
+      dropDownElement.dropdown({
+        onChange: this.updateValue,
+      });
+    },
+    findSelectedOption(selectedValue) {
+      let option = this.tryFindOptionByString(selectedValue);
 
-            if (!option) {
-                option = this.tryFindOptionByNumber(selectedValue);
-            }
+      if (!option) {
+        option = this.tryFindOptionByNumber(selectedValue);
+      }
 
-            return option;
-        },
-        tryFindOptionByString(selectedValue) {
-            const option = _.find(this.options, ['value', selectedValue]);
-            return option;
-        },
-        tryFindOptionByNumber(selectedValue) {
-            const option = _.find(this.options, ['value', Number(selectedValue)]);
-            return option;
-        },
-        updateValue(value) {
-            const option = this.findSelectedOption(value);
-            this.$emit('update:value', option);
-            this.$nextTick(this.startDropdown);
-        },
+      return option;
     },
-    computed: {
-        hasIcons() {
-            return !!this.iconProperty;
-        },
+    tryFindOptionByString(selectedValue) {
+      const option = _.find(this.options, ['value', selectedValue]);
+      return option;
     },
-    watch: {
-        options() {
-            this.updateValue(this.options[0].value);
-        },
-        iconProperty() {
-            this.updateValue(this.options[0].value);
-        },
+    tryFindOptionByNumber(selectedValue) {
+      const option = _.find(this.options, ['value', Number(selectedValue)]);
+      return option;
     },
+    updateValue(value) {
+      const option = this.findSelectedOption(value);
+      this.$emit('update:value', option);
+      this.$nextTick(this.startDropdown);
+    },
+  },
+  computed: {
+    hasIcons() {
+      return !!this.iconProperty;
+    },
+  },
+  watch: {
+    options() {
+      this.updateValue(this.options[0].value);
+    },
+    iconProperty() {
+      this.updateValue(this.options[0].value);
+    },
+  },
 };
-
 </script>
 
 <style lang="less" scoped>

@@ -9,7 +9,7 @@ describe('Dimmer', () => {
     beforeEach((done) => {
         $().reset();
         validProps = {
-            dimmerId: 'dimmerId',
+            id: 'id',
             showDimmer: false,
             targetSelector: '.my-dimmer',
         };
@@ -25,18 +25,18 @@ describe('Dimmer', () => {
             console.error.restore(); // eslint-disable-line
             done();
         });
-        it('should throw exception when doesnt have dimmerId prop', (done) => {
+        it('should throw exception when doesnt have id prop', (done) => {
             const invalidProps = {
                 showDimmer: false,
                 targetSelector: '.my-dimmer',
             };
             new DimmerConstructor({ propsData: invalidProps }).$mount();
-            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "dimmerId"'); // eslint-disable-line
+            expect(console.error).to.have.been.calledWithMatch('[Vue warn]: Missing required prop: "id"'); // eslint-disable-line
             done();
         });
         it('should throw exception when doesnt have showDimmer prop', (done) => {
             const invalidProps = {
-                dimmerId: 'dimmerId',
+                id: 'id',
                 targetSelector: '.my-dimmer',
             };
             new DimmerConstructor({ propsData: invalidProps }).$mount();
@@ -45,7 +45,7 @@ describe('Dimmer', () => {
         });
         it('should throw exception when doesnt have targetSelector prop', (done) => {
             const invalidProps = {
-                dimmerId: 'dimmerId',
+                id: 'id',
                 showDimmer: false,
             };
             new DimmerConstructor({ propsData: invalidProps }).$mount();

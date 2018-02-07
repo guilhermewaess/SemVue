@@ -12,15 +12,15 @@
         <div class="ui grid">
             <div class="three wide column">
                 <div class="ui sub header">Position*</div>
-                <dropdown dropdownId="dropdown-positions" :options="positions" :value.sync="position" customClass="large fluid label"></dropdown>
+                <dropdown id="dropdown-positions" :options="positions" :value.sync="position" customClass="large fluid label"></dropdown>
             </div>
             <div class="two wide column">
                 <div class="ui sub header">Trigger</div>
-                <dropdown dropdownId="dropdown-triggers" :options="triggers" :value.sync="trigger" customClass="large fluid label"></dropdown>
+                <dropdown id="dropdown-triggers" :options="triggers" :value.sync="trigger" customClass="large fluid label"></dropdown>
             </div>
             <div class="three wide column">
                 <div class="ui sub header">Transitions</div>
-                <dropdown dropdownId="dropdown-transitions" :options="transitions" :value.sync="transition" customClass="large fluid label"></dropdown>
+                <dropdown id="dropdown-transitions" :options="transitions" :value.sync="transition" customClass="large fluid label"></dropdown>
             </div>
         </div>
         <p>* Position: If space is not available, it will automatically search for a similar alternative position to use.</p>
@@ -40,7 +40,7 @@
     
         <div class="ui segment code">
             <pre>
-            &ltpopup popupId="nice-popup" :trigger="trigger.value" targetSelector=".popup-example-element" :options="popupOptions" customClass="fluid"&gt
+            &ltpopup id="nice-popup" :trigger="trigger.value" targetSelector=".popup-example-element" :options="popupOptions" customClass="fluid"&gt
                 *your custom popup html here*
             &lt/popup&gt
             </pre>
@@ -59,7 +59,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>popupId</td>
+                    <td>id</td>
                     <td>String</td>
                     <td>Yes</td>
                     <td>-</td>
@@ -105,7 +105,7 @@
             </tbody>
         </table>
     
-        <popup popupId="nice-popup" :trigger="trigger.value" targetSelector=".popup-example-element" :options="popupOptions" customClass="flowing">
+        <popup id="nice-popup" :trigger="trigger.value" targetSelector=".popup-example-element" :options="popupOptions" customClass="flowing">
             <div class="ui horizontal segments">
                 <div class="ui center aligned segment">
                     <h4 class="ui header">Selected Position</h4>
@@ -128,49 +128,49 @@
 import { Dropdown, Popup } from '@/semvue';
 
 export default {
-    name: 'PopupDoc',
-    components: {
-        Dropdown,
-        Popup,
+  name: 'PopupDoc',
+  components: {
+    Dropdown,
+    Popup,
+  },
+  data() {
+    return {
+      position: { value: 'top left', text: 'Top Left' },
+      trigger: { value: 'click', text: 'Click' },
+      transition: { value: 'horizontal flip', text: 'Horizontal Flip' },
+      positions: [
+        { value: 'top left', text: 'Top Left' },
+        { value: 'top center', text: 'Top Center' },
+        { value: 'top right', text: 'Top Right' },
+        { value: 'bottom left', text: 'Bottom Left' },
+        { value: 'bottom center', text: 'Bottom Center' },
+        { value: 'bottom right', text: 'Bottom Right' },
+        { value: 'right center', text: 'Right Center' },
+        { value: 'left center', text: 'Left Center' },
+      ],
+      transitions: [
+        { value: 'horizontal flip', text: 'Horizontal Flip' },
+        { value: 'vertical flip', text: 'Vertical Flip' },
+        { value: 'fade up', text: 'Fade Up' },
+        { value: 'fade', text: 'Fade' },
+        { value: 'scale', text: 'Scale' },
+      ],
+      triggers: [
+        { value: 'click', text: 'Click' },
+        { value: 'hover', text: 'Hover' },
+      ],
+    };
+  },
+  computed: {
+    popupOptions() {
+      return {
+        closable: false,
+        duration: 500,
+        position: this.position.value,
+        transition: this.transition.value,
+      };
     },
-    data() {
-        return {
-            position: { value: 'top left', text: 'Top Left' },
-            trigger: { value: 'click', text: 'Click' },
-            transition: { value: 'horizontal flip', text: 'Horizontal Flip' },
-            positions: [
-                { value: 'top left', text: 'Top Left' },
-                { value: 'top center', text: 'Top Center' },
-                { value: 'top right', text: 'Top Right' },
-                { value: 'bottom left', text: 'Bottom Left' },
-                { value: 'bottom center', text: 'Bottom Center' },
-                { value: 'bottom right', text: 'Bottom Right' },
-                { value: 'right center', text: 'Right Center' },
-                { value: 'left center', text: 'Left Center' },
-            ],
-            transitions: [
-                { value: 'horizontal flip', text: 'Horizontal Flip' },
-                { value: 'vertical flip', text: 'Vertical Flip' },
-                { value: 'fade up', text: 'Fade Up' },
-                { value: 'fade', text: 'Fade' },
-                { value: 'scale', text: 'Scale' },
-            ],
-            triggers: [
-                { value: 'click', text: 'Click' },
-                { value: 'hover', text: 'Hover' },
-            ],
-        };
-    },
-    computed: {
-        popupOptions() {
-            return {
-                closable: false,
-                duration: 500,
-                position: this.position.value,
-                transition: this.transition.value,
-            };
-        },
-    },
+  },
 };
 </script>
 
@@ -178,14 +178,14 @@ export default {
 <style lang="less" scoped>
 #dropdown-positions,
 #dropdown-triggers {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .popup-example-element {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .code {
-    padding: 0!important;
+  padding: 0 !important;
 }
 </style>
