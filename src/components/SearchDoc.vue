@@ -18,11 +18,12 @@
   
       <div class="four wide column">
         <label for="">Type any StarWars people</label>
+                <!-- apiUrl="https://swapi.co/api/people/?search={query}" -->
         <search searchId="api-search"
-                apiUrl="https://swapi.co/api/people/?search={query}"
+                apiUrl="https://jsonplaceholder.typicode.com/users?name={query}"
                 :value.sync="apiValue"
                 :searchFields="['name']"></search>
-                <label for="">Api content <a href="http://swapi.co/documentation#people">(Thanks Swapi)</a></label>
+        <label for="">Api content <a href="http://swapi.co/documentation#people">(Thanks Swapi)</a></label>
       </div>
     </div>
   </div>
@@ -54,6 +55,6 @@ export default {
 
 <style lang="less" scoped>
 .code {
-  padding: 0!important;
+  padding: 0 !important;
 }
 </style>
