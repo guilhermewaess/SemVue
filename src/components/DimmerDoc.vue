@@ -1,4 +1,3 @@
-// @ts-check
 <template>
     <div class="ui container">
         <h1 class="ui dividing header">Dimmer</h1>
