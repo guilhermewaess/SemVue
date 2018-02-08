@@ -39,6 +39,7 @@ export default {
  - Accordion
  - Dimmer
  - Dropdown
+ - Embed
  - Modal
  - Popup
  - Progress
